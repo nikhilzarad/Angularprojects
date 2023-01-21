@@ -1,94 +1,183 @@
-
-<div class="container-fluid " >
-<div class="row navbar navbar-light ">
-  <div class="col-md-4  d-flex justify-content-around">
-    <img class="navbar-brand" width="30" height="30" class="d-inline-block align-top" src="/assets/employeeLogo.jpg" alt="">
-  </div>
-  <div class="col-md-4 d-flex justify-content-around fw-bold font-monospace">
-    <h1>Employee Record App</h1>
-  </div>
-  <div class="col-md-4 d-flex justify-content-around ">
-    <div class="btnAddEmployee  d-flex">
-      <a class="btn btn-success" (click)="onAdd()">Add Employee</a>
+<div class="container-fluid">
+  <div class="row navbar navbar-light">
+    <div class="col-md-4 d-flex justify-content-around">
+      <img
+        class="navbar-brand"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        src="/assets/employeeLogo.jpg"
+        alt=""
+      />
+    </div>
+    <div class="col-md-4 d-flex justify-content-around fw-bold font-monospace">
+      <h1>Employee Record App</h1>
+    </div>
+    <div class="col-md-4 d-flex justify-content-around">
+      <div class="btnAddEmployee d-flex">
+        <a class="btn btn-success" (click)="onAdd()">Add Employee</a>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <div class="container-fluid">
- <div class="row">
-  <div [ngClass]="isSidePanel?'col-md-12':'col-md-8'">
-    <table class="table table-bordered mt-4">
-      <thead>
-        <tr>
-          <th scope="col">Employee Id</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Contact Number</th>
-          <th scope="col">Salary</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Nikhil</td>
-          <td>zarad</td>
-          <td>nikhil123@gmail.com</td>
-          <td>8378945050</td>
-          <td>$ 20000</td>
-          <td>
-            <button type="button" class="btn btn-primary me-3">Edit</button>
-            <button type="button" class="btn btn-danger">delete</button>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
-   </div>
-   <div class="formDetail col-md-4" *ngIf="!isSidePanel">
-    <form [formGroup]="employeeValue">
-      <div class="employeeDetails text-center ">
-        <h3>Employee Details</h3>
-      </div>
-    </form >
-    <div class="container ">
-      <div class="row">
-        <div class="col-md-6">
-          <label for="">First Name</label>
-          <input type="text" formControlName="firstName" class="form-control">
+  <div class="row">
+    <div [ngClass]="isSidePanel ? 'col-md-8' : 'col-md-12'">
+      <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employeeArray; let sr = index">
+            <td>{{ sr + 1 }}</td>
+            <td>{{ item.fName }}</td>
+            <td>{{ item.lName }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.contact }}</td>
+            <td>{{ item.salary }}</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary me-3"
+                (click)="onEdit(item)"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDelete(item.employeeId)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container formDetail col-md-4" *ngIf="isSidePanel">
+      <form #form="ngForm">
+        <div class="employeeDetails text-center">
+          <h3>Employee Details</h3>
         </div>
-        <div class="col-md-6">
-          <label for="">Last Name</label>
-          <input type="text" formControlName="lastName" class="form-control">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              required
+              #firstname="ngModel"
+              [(ngModel)]="employeeObj.fName"
+              class="form-control"
+            />
+            <div class="text-danger">
+              <span *ngIf="lastname.invalid && lastname.touched"
+                >This is required</span
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="">Last Name</label>
+            <input
+              type="text"
+              name="lastNmae"
+              required
+              #lastname="ngModel"
+              [(ngModel)]="employeeObj.lName"
+              class="form-control"
+            />
+            <div class="text-danger">
+              <span *ngIf="lastname.invalid && lastname.touched"
+                >This is required</span
+              >
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <label for="">Email</label>
-          <input type="email" formControlName="email" class="form-control">
+        <div class="row">
+          <div class="col-md-12">
+            <label for="">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              #email="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              [(ngModel)]="employeeObj.email"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="email.touched">
+              <span *ngIf="email.errors?.['pattern']"
+                >Please Enter valid Email</span
+              >
+              <span *ngIf="email.errors?.['required']">This is Required</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <label for="">Contact Number</label>
-          <input type="text" formControlName="Contact" class="form-control">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="">Contact Number</label>
+            <input
+              type="text"
+              name="contact"
+              required
+              maxlength="10"
+              #phone="ngModel"
+              [(ngModel)]="employeeObj.contact"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="phone.touched">
+              <span *ngIf="phone.errors?.['maxlength']"
+                >Please enter valid contsct number</span
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="">Salary</label>
+            <input
+              type="text"
+              name="salary"
+              [(ngModel)]="employeeObj.salary"
+              class="form-control"
+            />
+            <div class="text-danger" *ngIf="form.touched">
+              <span *ngIf="form.errors?.['required']">this is required</span>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          <label for="">Salary</label>
-          <input type="text" formControlName="Salary" class="form-control">
+        <div class="row">
+          <div class="savebtn text-center mt-3">
+            <button
+              type="button"
+              [disabled]="!form.valid"
+              (click)="onsave()"
+              *ngIf="employeeObj.employeeId == 0"
+              class="btn btn-info me-3"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              (click)="onUpdate()"
+              *ngIf="employeeObj.employeeId !== 0"
+              class="btn btn-info me-3"
+            >
+              update
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onClose()">
+              Close
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="savebtn text-center mt-3">
-          <button type="button" (click)="onsave()" class="btn btn-info me-3">Save</button>
-          <button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
-
- </div>
 </div>
-
-

@@ -1,49 +1,80 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
 
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
-  styleUrls: ['./employee-dashboard.component.css']
+  styleUrls: ['./employee-dashboard.component.css'],
 })
-export class EmployeeDashboardComponent implements OnInit{
-  isSidePanel:boolean =false;
-  employeeValue: FormGroup;
-
-constructor(){
-  this.employeeValue = new FormGroup({
-    firstName : new FormControl(),
-    lastName : new FormControl(),
-    contact : new FormControl(),
-    email : new FormControl(),
-    salary : new FormControl(),
-  })
-
-}
+export class EmployeeDashboardComponent implements OnInit {
+  isSidePanel: boolean = false;
+  employeeArray: any[] = [];
+  employeeObj: any = {
+    employeeId: 0,
+    fName: '',
+    lName: '',
+    email: '',
+    contact: '',
+    salary: '',
+  };
+  constructor() {
+    this.isSidePanel = false;
+  }
   ngOnInit(): void {
+    this.getmpDetail();
+  }
+  onedit(emp: any) {
+    this.employeeArray = emp;
+  }
 
-}
+  onAdd() {
+    this.isSidePanel = true;
+  }
+  onClose() {
+    this.isSidePanel = false;
+  }
+  onsave() {
+    this.employeeArray.push(this.employeeObj);
+    this.employeeObj.employeeId = this.employeeArray.length + 1;
+    localStorage.setItem('empdetail', JSON.stringify(this.employeeArray));
+    this.onClose();
 
-onAdd(){
-  this.isSidePanel=false;
-}
-onClose(){
-  this.isSidePanel=true;
-}
-onsave(){
-  const formValue = this.employeeValue.value;
-}
+    this.employeeObj = {
+      employeeId: 0,
+      fName: '',
+      lName: '',
+      email: '',
+      contact: '',
+      salary: '',
+    };
+  }
 
-
-
-
-
-
-
-
-
-
-
-
+  getmpDetail() {
+    const localData = localStorage.getItem('empdetail');
+    if (localData != null) {
+      this.employeeArray = JSON.parse(localData);
+    }
+  }
+  onEdit(emp: any) {
+    this.employeeObj = emp;
+    this.isSidePanel = true;
+  }
+  onUpdate() {
+    const record = this.employeeArray.find(
+      (m) => m.employeeId == this.employeeObj.employeeId
+    );
+    record.fName = this.employeeObj.fName;
+    record.lName = this.employeeObj.lName;
+    record.email = this.employeeObj.email;
+    record.contact = this.employeeObj.contact;
+    record.salary = this.employeeObj.salary;
+    localStorage.setItem('empdetail', JSON.stringify(this.employeeArray));
+    this.onClose();
+  }
+  onDelete(id: number) {
+    for (let i = 0; i < this.employeeArray.length; i++) {
+      if (this.employeeArray[i].employeeId == id) {
+        this.employeeArray.splice(i, 1);
+      }
+    }
+  }
 }
