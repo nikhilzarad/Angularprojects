@@ -20,7 +20,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.isSidePanel = false;
   }
   ngOnInit(): void {
-    this.getmpDetail();
+    this.getempDetail();
   }
   onedit(emp: any) {
     this.employeeArray = emp;
@@ -47,8 +47,7 @@ export class EmployeeDashboardComponent implements OnInit {
       salary: '',
     };
   }
-
-  getmpDetail() {
+  getempDetail() {
     const localData = localStorage.getItem('empdetail');
     if (localData != null) {
       this.employeeArray = JSON.parse(localData);
