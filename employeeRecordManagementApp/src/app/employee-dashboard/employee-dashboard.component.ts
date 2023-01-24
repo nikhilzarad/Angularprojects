@@ -6,74 +6,72 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-dashboard.component.css'],
 })
 export class EmployeeDashboardComponent implements OnInit {
-  isSidePanel: boolean = false;
-  employeeArray: any[] = [];
+  isSidepannel: boolean = false;
+  empArray:any[]=[];
   employeeObj: any = {
-    employeeId: 0,
+    empId: 0,
     fName: '',
     lName: '',
     email: '',
     contact: '',
     salary: '',
   };
-  constructor() {
-    this.isSidePanel = false;
-  }
+  constructor() {}
+
   ngOnInit(): void {
-    this.getempDetail();
-  }
-  onedit(emp: any) {
-    this.employeeArray = emp;
+    this.getDetails();
   }
 
-  onAdd() {
-    this.isSidePanel = true;
+  onAddEmp() {
+    this.isSidepannel = true;
   }
   onClose() {
-    this.isSidePanel = false;
+    this.isSidepannel = false;
   }
-  onsave() {
-    this.employeeArray.push(this.employeeObj);
-    this.employeeObj.employeeId = this.employeeArray.length + 1;
-    localStorage.setItem('empdetail', JSON.stringify(this.employeeArray));
-    this.onClose();
+onSave(){
+  this.empArray.push(this.employeeObj);
+  this.employeeObj.empId=this.empArray.length+1;
+  localStorage.setItem('empdetails',JSON.stringify(this.empArray));
+  this.onClose();
 
-    this.employeeObj = {
-      employeeId: 0,
-      fName: '',
-      lName: '',
-      email: '',
-      contact: '',
-      salary: '',
-    };
+  this.employeeObj = {
+    empId: 0,
+    fName: '',
+    lNmae: '',
+    email: '',
+    contact: '',
+    salary: '',
+  };
+}
+getDetails(){
+  const localData =localStorage.getItem('empdetails')
+  if(localData!=null){
+    this.empArray= JSON.parse(localData);
+
   }
-  getempDetail() {
-    const localData = localStorage.getItem('empdetail');
-    if (localData != null) {
-      this.employeeArray = JSON.parse(localData);
-    }
+
+
+}
+onEdit(emp:any){
+  this.employeeObj = emp;
+  this.isSidepannel = true;
+}
+onUpdate(){
+  const record =this.empArray.find((m)=>m.empId==this.employeeObj.empId);
+  record.fName=this.employeeObj.fName;
+  record.lName=this.employeeObj.lName;
+  record.email=this.employeeObj.email;
+  record.contact=this.employeeObj.contact;
+  record.salary=this.employeeObj.salary;
+  localStorage.setItem('empdetails',JSON.stringify(record))
+  this.onClose();
+
+}
+onDelete(id:number){
+for(let i=0;i< this.empArray.length;i++){
+  if(this.empArray[i].empId==id){
+    this.empArray.splice(i,1);
   }
-  onEdit(emp: any) {
-    this.employeeObj = emp;
-    this.isSidePanel = true;
-  }
-  onUpdate() {
-    const record = this.employeeArray.find(
-      (m) => m.employeeId == this.employeeObj.employeeId
-    );
-    record.fName = this.employeeObj.fName;
-    record.lName = this.employeeObj.lName;
-    record.email = this.employeeObj.email;
-    record.contact = this.employeeObj.contact;
-    record.salary = this.employeeObj.salary;
-    localStorage.setItem('empdetail', JSON.stringify(this.employeeArray));
-    this.onClose();
-  }
-  onDelete(id: number) {
-    for (let i = 0; i < this.employeeArray.length; i++) {
-      if (this.employeeArray[i].employeeId == id) {
-        this.employeeArray.splice(i, 1);
-      }
-    }
-  }
+}
+}
 }
