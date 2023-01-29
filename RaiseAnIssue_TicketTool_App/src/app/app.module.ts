@@ -11,7 +11,8 @@ import { DepartmentComponent } from './pages/department/department.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EmpLayoutComponent } from './pages/emp-layout/emp-layout.component';
 import { DeptLayoutComponent } from './pages/dept-layout/dept-layout.component';
-
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,10 @@ import { DeptLayoutComponent } from './pages/dept-layout/dept-layout.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

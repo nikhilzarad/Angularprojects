@@ -41,7 +41,6 @@ const routes: Routes = [
     component: DeptLayoutComponent,
     children: [
       { path: 'DeptTickets', component: TicketsComponent },
-      { path: 'DeptEmployee', component: EmployeeComponent },
       { path: 'DeptLeaves', component: LeavesComponent },
     ],
   },

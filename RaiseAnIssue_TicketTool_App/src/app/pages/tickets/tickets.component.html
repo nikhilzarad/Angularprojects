@@ -1,1 +1,90 @@
-<p>tickets works!</p>
+<div class="row">
+  <div class="col-md-8 ">
+    <div class="card">
+      <div class="card-header bg-success">Ticket List</div>
+      <div class="card-body"></div>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th>Sr No</th>
+              <th >Employee</th>
+              <th>Request No</th>
+              <th>Dept</th>
+              <th>State</th>
+              <th>Created On</th>
+              <th> Expected By</th>
+              <th>Severity</th>
+              <th>Assigned To</th>
+              <th>Completed On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of gridList; let sr =index">
+              <td >{{sr+1}}</td>
+              <td >{{item.EmployeeName}}</td>
+              <td >{{item.RequestNo}}</td>
+              <td >{{item.DeptName}}</td>
+              <td >{{item.State}}</td>
+              <td >{{item.CreatedDate}}</td>
+              <td >{{item.ExpectedEndDate}}</td>
+              <td >{{item.Severity}}</td>
+              <td >{{item.AssignedTo}}</td>
+              <td >{{item.CompletedDate}}</td>
+              <td>
+                <button class="btn btn-info btn-sm">Edit</button> &nbsp;
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </td>
+
+            </tr>
+          </tbody>
+
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4 ">
+    <div class="card">
+      <div class="card-header bg-success">Create New Ticket</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+           <label for="">Select Department</label>
+           <select name="" id=""  class="form-control" [(ngModel)]="ticketObj.DeptId">
+            <option value="">Select</option>
+            <option *ngFor="let item of departmentList" [value]="item.DeptId">
+              {{ item.DeptName }}
+            </option>
+           </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+           <label for="">Select Priority</label>
+           <select name="" id="" class="form-control"  [(ngModel)]="ticketObj.Severity">
+            <option value="">Select</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+           </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+           <label for="">Your Request</label>
+          <textarea name="" id="" class="form-control"  [(ngModel)]="ticketObj.RequestDetails" >
+
+          </textarea>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6 text-center">
+            <button class=" btn bg-danger">close</button>
+          </div>
+          <div class="col-md-6 text-center">
+            <button  class=" btn bg-success" (click)="onCreateTicket()">Create Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
