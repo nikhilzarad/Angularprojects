@@ -1,0 +1,6 @@
+.welcometag h1{font-family: 'Architects Daughter', cursive;
+  }
+.welcometag h3{font-family: 'Kalam', cursive;
+display: flex;
+justify-content: center;
+padding-top: 10px;}
