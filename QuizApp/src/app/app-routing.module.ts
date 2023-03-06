@@ -4,13 +4,13 @@ import { QuestionsComponent } from './questions/questions.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
-  {path:'',component:WelcomePageComponent},
-  {path:'welcome',component:WelcomePageComponent},
-  {path:'questions',component:QuestionsComponent},
+  { path: '', component: WelcomePageComponent },
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'questions', component: QuestionsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
