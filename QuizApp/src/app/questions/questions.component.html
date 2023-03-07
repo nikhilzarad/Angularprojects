@@ -12,35 +12,52 @@
         <span>Welcome {{ name }}</span>
       </div>
     </div>
-    <div class="questionTImer d-flex justify-content-around p-3">
-      <div class="points">{{ points }} Points</div>
-      <div class="questionRemain">
-        Question {{ currentQuestion + 1 }} of {{ QuestionList.length }}
-      </div>
-      <div class="timer">{{ counter }} Sec 🕑</div>
+  <ng-container *ngIf="!isCompleredQuiz" >
+     <div class="questionTImer d-flex justify-content-around p-3">
+    <div class="points">{{ points }} Points</div>
+    <div class="questionRemain">
+      Question {{ currentQuestion + 1 }} of {{ QuestionList.length }}
     </div>
-    <div class="question">
-      Q. {{ QuestionList[currentQuestion]?.questionText }}
-    </div>
-    <div class="option pt-2">
-      <ol *ngFor="let option of QuestionList[currentQuestion]?.options">
-        <li (click)="answer(currentQuestion + 1, option)">{{ option.text }}</li>
-      </ol>
-    </div>
-    <div class="btn d-flex justify-content-between p-5">
-      <button
-        class="previousBtn btnhover"
-        [disabled]="currentQuestion == 0"
-        (click)="previousQuestion()"
-      >
-        <i class="fa fa-angle-double-left" style="font-size: 36px"></i>
-      </button>
-      <button class="refreshBtn btnhover" (click)="refreshQuiz()">
-        <i class="fa fa-refresh" style="font-size: 36px"></i>
-      </button>
-      <button class="nextBtn btnhover" (click)="nextQuestion()">
-        <i class="fa fa-angle-double-right" style="font-size: 36px"></i>
-      </button>
-    </div>
+    <div class="timer">{{ counter }} Sec 🕑</div>
+  </div>
+  <div class="question">
+    Q. {{ QuestionList[currentQuestion]?.questionText }}
+  </div>
+  <div class="option pt-2">
+    <ol *ngFor="let option of QuestionList[currentQuestion]?.options">
+      <li (click)="answer(currentQuestion + 1, option)">
+       <div class="card optionCard" appColourBg [iscorrect]="option.correct"> {{ option.text }}</div>
+      </li>
+    </ol>
+  </div>
+  <div class="btn d-flex justify-content-between p-5">
+    <button
+      class="previousBtn btnhover"
+      [disabled]="currentQuestion == 0"
+      (click)="previousQuestion()"
+    >
+      <i class="fa fa-angle-double-left" style="font-size: 36px"></i>
+    </button>
+    <button class="refreshBtn btnhover" (click)="refreshQuiz()">
+      <i class="fa fa-refresh" style="font-size: 36px"></i>
+    </button>
+    <button class="nextBtn btnhover" (click)="nextQuestion()">
+      <i class="fa fa-angle-double-right" style="font-size: 36px"></i>
+    </button>
+  </div></ng-container>
+  <ng-container *ngIf="isCompleredQuiz" >
+     <div class=" card d-flex justify-content-around">
+       <div class=""><img src="../../assets/congratulations.jpg" height="350" alt=""></div>
+     <div class="result">
+      <h4>Congratulations {{name}} !!!🎊🎊</h4>
+      <h5>You Have Completed the Quiz <br>Below is your Result:</h5>
+      <p>Total Question Attempted : {{correctAnswer+incorrectAnswer}}</p>
+      <p>Total correct Answer : {{correctAnswer}}</p>
+      <p>Total Incorrect Answer : {{incorrectAnswer}}</p>
+      <p>Your Score : {{points}} Points</p>
+      <p></p>
+     </div>
+     </div>
+  </ng-container>
   </div>
 </div>

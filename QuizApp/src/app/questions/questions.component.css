@@ -12,13 +12,17 @@
 .question {
   font-weight: bold;
   font-size: 21px;
+
 }
-.option li {
-  border: 1px solid;
+.optionCard {
+
   padding: 5px;
   margin-bottom: 5px;
   margin-right: 5px;
   border-radius: 5px;
+}
+.optionCard:hover{
+  border: 2px solid rgba(47, 47, 168, 0.701);
 }
 ol {
   list-style: none;
@@ -29,3 +33,11 @@ ol {
 .btnhover:hover {
   color: orange;
 }
+.result {
+  font-family: "Kalam", cursive;
+
+}
+.result h4{
+  font-weight: bold;
+  font-size: 30px;
+letter-spacing: 3px;}

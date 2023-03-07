@@ -16,7 +16,7 @@ export class QuestionsComponent implements OnInit {
   currentQuestion: number = 0;
   correctAnswer: number = 0;
   incorrectAnswer: number = 0;
-
+isCompleredQuiz: boolean=false;
   constructor(private questionService: QuestionserviceService) {}
   ngOnInit(): void {
     this.name = localStorage.getItem('name')!;
@@ -29,14 +29,26 @@ export class QuestionsComponent implements OnInit {
     });
   }
   answer(questionNo: number, option: any) {
+    if(questionNo===this.QuestionList.length){
+this.isCompleredQuiz=true;
+this.stopCounter();
+    }
     if (option.correct) {
-      this.points += 10;
-      this.correctAnswer++;
-      this.currentQuestion++;
+      setTimeout(()=>{
+        this.points += 10;
+        this.correctAnswer++;
+        this.currentQuestion++;
+        this.counter=60;
+      },1000)
+
     } else {
-      this.points -= 10;
-      this.incorrectAnswer++;
-      this.currentQuestion++;
+      setTimeout(()=>{
+        this.points -= 5;
+        this.incorrectAnswer++;
+        this.currentQuestion++;
+        this.counter=60;
+      },1000)
+
     }
   }
   startCounter() {
@@ -62,15 +74,24 @@ export class QuestionsComponent implements OnInit {
     this.counter = 60;
     this.startCounter();
   }
-
   nextQuestion() {
     this.currentQuestion++;
     this.counter = 60;
+    if(this.currentQuestion!==this.QuestionList.length){
+      this.isCompleredQuiz=false;
+    }else{
+      this.isCompleredQuiz=true;
+
+
+    }
   }
   refreshQuiz() {
     this.resetCounter();
     this.currentQuestion = 0;
     this.points = 0;
+    if(this.currentQuestion!==this.QuestionList.length){
+      this.isCompleredQuiz=true;
+    }
   }
   previousQuestion() {
     this.currentQuestion--;

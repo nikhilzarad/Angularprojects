@@ -8,3 +8,8 @@
 .navbar-brand a {
   padding-right: 5px;
 }
+.copyRight{
+  font-family: "Kalam", cursive;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
