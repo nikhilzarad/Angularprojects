@@ -1,0 +1,174 @@
+<div class="row">
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-header bg-success">
+        <div class="row">
+          <div class="col-md-6">Packages Portal</div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <button class="btn btn-primary">Create Packages</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Package Name</th>
+              <th>cost</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="!isLoader">
+            <tr *ngFor="let package of packagesArray; let sr = index">
+              <td>{{ sr + 1 }}</td>
+              <td>{{ package.packageName }}</td>
+              <td>{{ package.packageCost }}</td>
+              <td>{{ package.packageDescription }}</td>
+              <td>{{ package.isPackageActive }}</td>
+              <td class="text-center">
+                <button
+                  class="btn btn-sm btn-primary me-2"
+                  (click)="editRecord(package.packageId)"
+                >
+                  Edit
+                </button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody *ngIf="isLoader">
+            <tr>
+              <td colspan="6" class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-secondary" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-success" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-danger" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-info" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-light" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-border text-dark" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="row">
+      <div class="card">
+        <div class="card-header bg-success">Create Package</div>
+        <div class="card-body">
+          <form action="">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">Package Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter Package Name"
+                  class="form-control"
+                  name="packageName"
+                  [(ngModel)]="packageObj.packageName"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="">Cost</label>
+                <input
+                  type="text"
+                  placeholder="Enter cost"
+                  class="form-control"
+                  name="cost"
+                  [(ngModel)]="packageObj.packageCost"
+                />
+              </div>
+              <div class="col-md-12">
+                <label for="">Description</label>
+                <textarea
+                  name="Description"
+                  class="form-control"
+                  id=""
+                  rows="3"
+                  [(ngModel)]="packageObj.packageDescription"
+                ></textarea>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="">Is Active</label>
+                <input
+                  type="checkbox"
+                  class="ms-2"
+                  name="Active"
+                  [(ngModel)]="packageObj.isPackageActive"
+                />
+              </div>
+              <div class="row text-center mt-4">
+                <div class="col-md-6">
+                  <button class="btn btn-primary">Reset</button>
+                </div>
+                <div class="col-md-6">
+                  <button
+                    class="btn btn-success"
+                    (click)="createNewPackage()"
+                    *ngIf="packageObj.packageId == 0"
+                  >
+                    <button
+                      *ngIf="isLoader == true"
+                      class="btn btn-light"
+                      type="button"
+                      disabled
+                    >
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    </button>
+                    Save
+                  </button>
+                  <button
+                    class="btn btn-success"
+                    (click)="updatePackage()"
+                    *ngIf="packageObj.packageId !== 0"
+                  >
+                    <button
+                      *ngIf="isLoader == true"
+                      class="btn btn-light"
+                      type="button"
+                      disabled
+                    >
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                    </button>
+                    update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
