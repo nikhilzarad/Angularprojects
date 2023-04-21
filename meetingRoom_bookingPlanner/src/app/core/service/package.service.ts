@@ -29,4 +29,7 @@ export class PackageService {
       obj
     );
   }
+  deletePackage(id:any){
+    return this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/DeletePackgeById?id='+id,{});
+  }
 }

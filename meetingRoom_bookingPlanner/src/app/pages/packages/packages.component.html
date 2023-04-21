@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-md-7">
+  <div  [ngClass]="packageForm ?'col-md-7':'col-md-12'">
     <div class="card">
       <div class="card-header bg-success">
         <div class="row">
           <div class="col-md-6">Packages Portal</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <button class="btn btn-primary">Create Packages</button>
+            <button class="btn btn-primary" (click)="formOpen()">Create Packages</button>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
                 >
                   Edit
                 </button>
-                <button class="btn btn-sm btn-danger">Delete</button>
+                <button class="btn btn-sm btn-danger" (click)="onDelete(package.packageId)">Delete</button>
               </td>
             </tr>
           </tbody>
@@ -74,7 +74,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-5"*ngIf="packageForm">
     <div class="row">
       <div class="card">
         <div class="card-header bg-success">Create Package</div>

@@ -1,0 +1,34 @@
+<body class="login-page">
+  <div class="login-box">
+    <h2 class="heading-login-box">Login</h2>
+    <form>
+      <div class="user-box">
+        <input
+          class="user-box-input"
+          type="text"
+          name="username"
+          required
+          [(ngModel)]="loginObj.userName"
+        />
+        <label class="user-box-label">Username</label>
+      </div>
+      <div class="user-box">
+        <input
+          class="user-box-input"
+          type="password"
+          name="password"
+          required
+          [(ngModel)]="loginObj.userPassword"
+        />
+        <label class="user-box-label">Password</label>
+      </div>
+      <a type="submit" class="login-box-button" href="#" (click)="onLogin()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div>
+</body>

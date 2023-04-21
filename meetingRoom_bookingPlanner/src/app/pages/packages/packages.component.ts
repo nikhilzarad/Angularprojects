@@ -7,6 +7,7 @@ import { PackageService } from 'src/app/core/service/package.service';
   styleUrls: ['./packages.component.css'],
 })
 export class PackagesComponent implements OnInit {
+  packageForm:boolean=false;
   isLoader: boolean = false;
   packagesArray: any[] = [];
   packageObj = {
@@ -33,6 +34,7 @@ export class PackagesComponent implements OnInit {
   }
   createNewPackage() {
     this.isLoader = true;
+    this.packageForm=false;
     this.packageService.addNewPackage(this.packageObj).subscribe((res: any) => {
       if (res.result) {
         this.isLoader = false;
@@ -55,17 +57,39 @@ export class PackagesComponent implements OnInit {
   }
   updatePackage() {
     this.isLoader = true;
+    this.packageForm=false;
     this.packageService
       .updateSelectedPackage(this.packageObj)
       .subscribe((res: any) => {
         if (res.result) {
           this.isLoader = true;
+
           this.loadPackage();
           alert('Package updated Sucessfully');
+
         } else {
           alert(res.message);
           this.isLoader = false;
         }
       });
+  }
+  onDelete(pkgId:number){
+    const isDelete=confirm('Are you sure want to Delete?')
+    if (isDelete==true){
+      this.packageService.deletePackage(pkgId).subscribe((res:any)=>{
+        if (res.result) {
+                 this.isLoader = true;
+                 this.loadPackage();
+                 alert('Package Deleted Sucessfully');
+               } else {
+                 alert(res.message);
+                 this.isLoader = false;
+               }
+          });
+    }
+
+  }
+  formOpen(){
+   this.packageForm=true;
   }
 }
