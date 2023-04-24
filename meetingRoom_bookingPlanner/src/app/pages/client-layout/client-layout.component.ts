@@ -7,8 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./client-layout.component.css']
 })
 export class ClientLayoutComponent {
-constructor(private router:Router){}
-
+  userName: string = '';
+  constructor(private router: Router) {
+    const name = localStorage.getItem('loginUserName');
+    if (name != null) {
+      this.userName =JSON.parse(name);
+    }
+  }
 onLogout(){
   this.router.navigateByUrl('');
 }

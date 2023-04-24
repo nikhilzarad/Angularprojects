@@ -1,1 +1,110 @@
-<p>users works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header bg-success">User Data</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4" *ngFor="let item of userList">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header">{{ item.role }}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.clientName }}</h5>
+                  <p class="card-text">
+                    {{ item.userName }} - {{ item.isActive }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header bg-success">Create User</div>
+        <div class="card-body">
+          <form action="">
+            <div class="row">
+              <div class="col-md-6" *ngIf="showClient">
+                <label for="">Select Client</label>
+                <select
+                  name="clientName"
+                  id=""
+                  class="form-control"
+                  [(ngModel)]="userObj.clientId"
+                >
+                  <option
+                    value=""
+                    *ngFor="let client of clientList"
+                    [value]="client.clientId"
+                  >
+                    {{ client.clientName }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="">select status</label>
+                <select
+                  name="isActive"
+                  id=""
+                  class="form-control"
+                  [(ngModel)]="userObj.isActive"
+                >
+                  <option value="">Select Status</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="">Select Role</label>
+                <select
+                  name="role"
+                  id=""
+                  class="form-control"
+                  [(ngModel)]="userObj.role"
+                >
+                  <option value="">Select Role</option>
+                  <option value="ClientAdmin">ClientAdmin</option>
+                  <option value="ClientUser">ClientUser</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="">Enter Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="userName"
+                  [(ngModel)]="userObj.userName"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="">Create Password</label>
+                <input
+                  type="text"
+                  name="userPassword"
+                  class="form-control ms-2"
+                  [(ngModel)]="userObj.userPassword"
+                />
+              </div>
+              <div class="row text-center mt-4">
+                <div class="col-md-6">
+                  <button class="btn btn-primary">Reset</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-success" (click)="saveUser()">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

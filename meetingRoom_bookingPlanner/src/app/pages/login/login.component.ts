@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
       .post('http://onlinetestapi.gerasim.in/api/Meeting/login', this.loginObj)
       .subscribe((res: any) => {
         if (res.result) {
-          if (res.data.role == 'SuperAdmin') {
+          const loginData=localStorage.setItem('loginInfo',JSON.stringify(res.data));
+          const loginUser= localStorage.setItem('loginUserName',JSON.stringify(res.data.userName));
+          if (res.data.role == 'Admin') {
             this.router.navigateByUrl('admin-Dashboard');
           } else if (res.data.role == 'ClientAdmin') {
             this.router.navigateByUrl('client-Dashboard');

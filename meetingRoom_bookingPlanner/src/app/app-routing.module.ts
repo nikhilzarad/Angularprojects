@@ -11,6 +11,7 @@ import { ClientUserDashboardComponent } from './pages/client-user-dashboard/clie
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { ClientLayoutComponent } from './pages/client-layout/client-layout.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { RoomsComponent } from './pages/rooms/rooms.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -30,6 +31,8 @@ const routes: Routes = [
     component: ClientLayoutComponent,
     children: [
       { path: 'client-Dashboard', component: ClientAdminDashboardComponent },
+      { path: 'rooms', component: RoomsComponent },
+      { path: 'client-User', component: UsersComponent },
     ],
   }, //for the clientAdmin Acess
   {

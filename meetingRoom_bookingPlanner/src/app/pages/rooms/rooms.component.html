@@ -1,11 +1,13 @@
 <div class="row">
-  <div  [ngClass]="packageForm ?'col-md-7':'col-md-12'">
+  <div [ngClass]="packageForm ? 'col-md-7' : 'col-md-12'">
     <div class="card">
       <div class="card-header bg-success">
         <div class="row">
-          <div class="col-md-6">Packages Portal</div>
+          <div class="col-md-6">Rooms Portal</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <button class="btn btn-primary" (click)="formOpen()">Create Packages</button>
+            <button class="btn btn-primary" (click)="formOpen()">
+              Create Rooms
+            </button>
           </div>
         </div>
       </div>
@@ -14,29 +16,34 @@
           <thead>
             <tr>
               <th>Sr No</th>
-              <th>Package Name</th>
-              <th>cost</th>
-              <th>Description</th>
+              <th>Room Name</th>
+              <th>Room Location</th>
+              <th>Seating Capacity</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody *ngIf="!isLoader">
-            <tr *ngFor="let package of packagesArray; let sr = index">
+            <tr *ngFor="let room of roomsArray; let sr = index">
               <td>{{ sr + 1 }}</td>
-              <td>{{ package.packageName }}</td>
-              <td>{{ package.packageCost }}</td>
-              <td>{{ package.packageDescription }}</td>
-              <td>{{ package.isPackageActive }}</td>
+              <td>{{room.roomName}}</td>
+              <td>{{ room.roomLocation }}</td>
+              <td>{{ room.roomSeatingCapacity }}</td>
+              <td>{{ room.isRoomActive }}</td>
               <td class="text-center">
                 <button
                   class="btn btn-sm btn-primary me-2"
-                  (click)="editRecord(package.packageId)"
+                  (click)="editRecord(room.roomId)"
                   (click)="formOpen()"
                 >
                   Edit
                 </button>
-                <button class="btn btn-sm btn-danger" (click)="onDelete(package.packageId)">Delete</button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="onDelete(room.roomId)"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>
@@ -75,41 +82,41 @@
       </div>
     </div>
   </div>
-  <div class="col-md-5"*ngIf="packageForm">
+  <div class="col-md-5" *ngIf="packageForm">
     <div class="row">
       <div class="card">
-        <div class="card-header bg-success">Create Package</div>
+        <div class="card-header bg-success">Create Rooms</div>
         <div class="card-body">
           <form action="">
             <div class="row">
               <div class="col-md-6">
-                <label for="">Package Name</label>
+                <label for="">Room Name</label>
                 <input
                   type="text"
-                  placeholder="Enter Package Name"
+                  placeholder="Enter Rooms Name"
                   class="form-control"
-                  name="packageName"
-                  [(ngModel)]="packageObj.packageName"
+                  name="roomName"
+                  [(ngModel)]="roomObj.roomName"
                 />
               </div>
               <div class="col-md-6">
-                <label for="">Cost</label>
+                <label for="">Room Location</label>
                 <input
                   type="text"
-                  placeholder="Enter cost"
+                  placeholder="Enter Room Location"
                   class="form-control"
                   name="cost"
-                  [(ngModel)]="packageObj.packageCost"
+                  [(ngModel)]="roomObj.roomLocation"
                 />
               </div>
               <div class="col-md-12">
-                <label for="">Description</label>
+                <label for="">Room Seating Capacity</label>
                 <textarea
-                  name="Description"
+                  name="Room Seating Capacity"
                   class="form-control"
                   id=""
                   rows="3"
-                  [(ngModel)]="packageObj.packageDescription"
+                  [(ngModel)]="roomObj.roomSeatingCapacity"
                 ></textarea>
               </div>
               <div class="col-md-6 mt-3">
@@ -118,7 +125,7 @@
                   type="checkbox"
                   class="ms-2"
                   name="Active"
-                  [(ngModel)]="packageObj.isPackageActive"
+                  [(ngModel)]="roomObj.isRoomActive"
                 />
               </div>
               <div class="row text-center mt-4">
@@ -128,8 +135,8 @@
                 <div class="col-md-6">
                   <button
                     class="btn btn-success"
-                    (click)="createNewPackage()"
-                    *ngIf="packageObj.packageId == 0"
+                    (click)="createNewRooms()"
+                    *ngIf="roomObj.roomId == 0"
                   >
                     <button
                       *ngIf="isLoader == true"
@@ -147,8 +154,8 @@
                   </button>
                   <button
                     class="btn btn-success"
-                    (click)="updatePackage()"
-                    *ngIf="packageObj.packageId !== 0"
+                    (click)="updateRoom()"
+                    *ngIf="roomObj.roomId !== 0"
                   >
                     <button
                       *ngIf="isLoader == true"
@@ -173,3 +180,4 @@
     </div>
   </div>
 </div>
+
