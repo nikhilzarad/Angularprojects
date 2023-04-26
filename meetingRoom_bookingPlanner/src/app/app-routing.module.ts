@@ -12,6 +12,7 @@ import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { ClientLayoutComponent } from './pages/client-layout/client-layout.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { RoomsComponent } from './pages/rooms/rooms.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
     component: UserLayoutComponent,
     children: [
       { path: 'user-Dashboard', component: ClientUserDashboardComponent },
+      { path: 'booking', component: BookingComponent },
     ],
   }, //for the clientUser Acess
 ];

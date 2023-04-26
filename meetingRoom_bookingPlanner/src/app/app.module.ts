@@ -17,6 +17,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { ClientAdminDashboardComponent } from './pages/client-admin-dashboard/client-admin-dashboard.component';
 import { ClientUserDashboardComponent } from './pages/client-user-dashboard/client-user-dashboard.component';
 import { RoomsComponent } from './pages/rooms/rooms.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RoomsComponent } from './pages/rooms/rooms.component';
     AdminDashboardComponent,
     ClientAdminDashboardComponent,
     ClientUserDashboardComponent,
-    RoomsComponent
+    RoomsComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

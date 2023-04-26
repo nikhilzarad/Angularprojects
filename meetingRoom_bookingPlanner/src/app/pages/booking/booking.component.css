@@ -1,0 +1,10 @@
+.tdBorder {
+  border: 1px solid;
+}
+.tbBorder {
+  border: 1px solid;
+  background: papayawhip;
+}
+.buttonTrigger {
+  display: block;
+}

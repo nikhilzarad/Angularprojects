@@ -1,0 +1,57 @@
+<div class="row mt-2">
+  <div class="col-md-12">
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" (click)="btnOpenTrig()" type="button">
+        Book Room
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 mt-3">
+    <table style="width: 100%">
+      <tr>
+        <td class="tbBorder">Room</td>
+        <td class="tbBorder" *ngFor="let booking of bookingArray">
+          {{ booking.roomName }}
+        </td>
+      </tr>
+
+      <tr style="width: 4%" *ngFor="let time of timeArray">
+        <td class="tbBorder">{{ time.time }}</td>
+        <td class="tdBorder" *ngFor="let booking of bookingArray"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="modal" id="mybtn" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Book Room</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="btnCloseTrig()"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="btnCloseTrig()"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
