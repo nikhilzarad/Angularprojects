@@ -8,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingComponent implements OnInit {
   timeArray: any[] = [];
+  roomsArray: any[] = [];
   bookingArray: any[] = [];
   userDetails: any;
+
   bookingObj: any = {
     BookingId: 0,
     RoomId: 0,
     UserId: 0,
     BookingDate: '2023-04-25T10:08:47.970Z',
-    FromTime: 0,
-    ToTime: 0,
+    FromTime: '',
+    ToTime: '',
     CreatedDate: '2023-04-25T10:08:47.970Z',
     LastUpdated: '2023-04-25T10:08:47.970Z',
   };
@@ -24,22 +26,15 @@ export class BookingComponent implements OnInit {
   constructor(private http: HttpClient) {
     const loginData = localStorage.getItem('loginInfo');
     if (loginData != null) {
-      const parseData = JSON.parse(loginData);
-      this.userDetails = parseData.clientId;
-      this.getAllBooking();
-      this.getTimeList();
+      this.userDetails = JSON.parse(loginData);
+      this.getRoomSList();
+      this.bookingObj.UserId = this.userDetails.userId;
     }
   }
 
   ngOnInit(): void {
+    this.getTimeList();
     this.getAllBooking();
-  }
-  getAllBooking() {
-    this.http
-      .get('http://onlinetestapi.gerasim.in/api/Meeting/GetAllBookings')
-      .subscribe((res: any) => {
-        this.bookingArray = res.data;
-      });
   }
 
   createBooking() {
@@ -49,30 +44,47 @@ export class BookingComponent implements OnInit {
         this.bookingObj
       )
       .subscribe((res: any) => {
-        this.bookingObj = res.data;
+        if (res.result) {
+          this.getAllBooking();
+          this.btnCloseTrig();
+          alert('booking done');
+        } else {
+          alert(res.message);
+        }
       });
   }
-
-  getBookingByClientId() {
+  getAllBooking() {
     this.http
       .get(
         'http://onlinetestapi.gerasim.in/api/Meeting/GetAllBookingsByClientId?clientId=' +
           this.userDetails.clientId
       )
       .subscribe((res: any) => {
-        this.userDetails = res.data;
+        this.bookingArray = res.data;
       });
   }
-  getBookingByUserId() {
+  getRoomSList() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllBookingsByUserId?userId=' +
-          this.bookingObj.UserId
+        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllRoomsByClientId?id=' +
+          this.userDetails.clientId
       )
       .subscribe((res: any) => {
-        this.bookingObj = res.data;
+        this.roomsArray = res.data;
       });
   }
+  checkBooking(roomid: number, timeid: number) {
+    debugger;
+    const bookingData = this.bookingArray.find(
+      (m) => m.roomId == roomid && (m.fromTime == timeid || m.toTime == timeid)
+    );
+    if (bookingData) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getTimeList() {
     this.http
       .get('http://onlinetestapi.gerasim.in/api/Meeting/GetTimeList')
