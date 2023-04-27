@@ -1,11 +1,13 @@
 <div class="row">
-  <div  [ngClass]="packageForm ?'col-md-7':'col-md-12'">
+  <div [ngClass]="packageForm ? 'col-md-7' : 'col-md-12'">
     <div class="card">
       <div class="card-header bg-success">
         <div class="row">
           <div class="col-md-6">Packages Portal</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <button class="btn btn-primary" (click)="formOpen()">Create Packages</button>
+            <button class="btn btn-primary" (click)="formOpen()">
+              Create Packages
+            </button>
           </div>
         </div>
       </div>
@@ -21,7 +23,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody *ngIf="!isLoader">
+          <tbody>
             <tr *ngFor="let package of packagesArray; let sr = index">
               <td>{{ sr + 1 }}</td>
               <td>{{ package.packageName }}</td>
@@ -36,38 +38,12 @@
                 >
                   Edit
                 </button>
-                <button class="btn btn-sm btn-danger" (click)="onDelete(package.packageId)">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-
-          <tbody *ngIf="isLoader">
-            <tr>
-              <td colspan="6" class="text-center">
-                <div class="spinner-border text-primary" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-secondary" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-success" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-danger" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-warning" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-info" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-light" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-border text-dark" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="onDelete(package.packageId)"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>
@@ -75,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-5"*ngIf="packageForm">
+  <div *ngIf="packageForm" class="col-md-5">
     <div class="row">
       <div class="card">
         <div class="card-header bg-success">Create Package</div>
@@ -131,18 +107,6 @@
                     (click)="createNewPackage()"
                     *ngIf="packageObj.packageId == 0"
                   >
-                    <button
-                      *ngIf="isLoader == true"
-                      class="btn btn-light"
-                      type="button"
-                      disabled
-                    >
-                      <span
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
                     Save
                   </button>
                   <button
@@ -150,18 +114,6 @@
                     (click)="updatePackage()"
                     *ngIf="packageObj.packageId !== 0"
                   >
-                    <button
-                      *ngIf="isLoader == true"
-                      class="btn btn-light"
-                      type="button"
-                      disabled
-                    >
-                      <span
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                    </button>
                     update
                   </button>
                 </div>
