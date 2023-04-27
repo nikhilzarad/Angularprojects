@@ -1,1 +1,95 @@
-<p>admin-dashboard works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-success">Admin Portal</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Room Booking</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ item.totBookings }}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Todays Booking</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">
+                    {{ item.todaysBooking }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Clients</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ item.totClients }}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Packages</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ item.totPackages }}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Rooms</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ item.totRooms }}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Users</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">{{ item.totUsers }}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4" *ngFor="let item of adminDataArray">
+              <div
+                class="card text-white bg-info mb-3"
+                style="max-width: 18rem"
+              >
+                <div class="card-header text-center">Total Active Packages</div>
+                <div class="card-body">
+                  <h3 class="card-title text-center">
+                    {{ item.totActivePackages }}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

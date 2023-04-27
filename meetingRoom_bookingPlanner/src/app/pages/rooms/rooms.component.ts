@@ -26,7 +26,7 @@ export class RoomsComponent implements OnInit {
     if (localUser != null) {
       const loginParse = JSON.parse(localUser);
       this.roomObj.clientId = loginParse.clientId;
-      // this.getRoomsByClientId();
+
     }
   }
   ngOnInit(): void {

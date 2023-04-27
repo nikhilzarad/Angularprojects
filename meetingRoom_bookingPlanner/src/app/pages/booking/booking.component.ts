@@ -11,7 +11,6 @@ export class BookingComponent implements OnInit {
   roomsArray: any[] = [];
   bookingArray: any[] = [];
   userDetails: any;
-
   bookingObj: any = {
     BookingId: 0,
     RoomId: 0,
@@ -74,10 +73,10 @@ export class BookingComponent implements OnInit {
       });
   }
   checkBooking(roomid: number, timeid: number) {
-    debugger;
     const bookingData = this.bookingArray.find(
       (m) => m.roomId == roomid && (m.fromTime == timeid || m.toTime == timeid)
     );
+
     if (bookingData) {
       return true;
     } else {

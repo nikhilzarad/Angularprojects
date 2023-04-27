@@ -19,13 +19,7 @@
 
       <tr style="width: 4%" *ngFor="let time of timeArray">
         <td class="tbBorder">{{ time.time }}</td>
-        <td
-          class="tdBorder"
-          *ngFor="let booking of roomsArray"
-          [ngClass]="
-            checkBooking(booking.roomId, time.timeId) ? 'bg-primary' : ''
-          "
-        ></td>
+        <td class="tdBorder" *ngFor="let booking of roomsArray" [ngClass]="checkBooking(booking.roomId,time.timeId)?'bg-success':''"></td>
       </tr>
     </table>
   </div>
@@ -45,53 +39,29 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-6">
-              <label for="">Select Room</label>
-              <select
-                name=""
-                id=""
-                [(ngModel)]="bookingObj.roomId"
-                class="form-control"
-              >
-                <option [value]="room.roomId" *ngFor="let room of roomsArray">
-                  {{ room.roomName }}
-                </option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="">Select Date</label>
-              <input
-                type="date"
-                [(ngModel)]="bookingObj.bookingDate"
-                class="form-control"
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="">Select from</label>
-              <select
-                name=""
-                id=""
-                [(ngModel)]="bookingObj.FromTime"
-                class="form-control"
-              >
-                <option [value]="room.timeId" *ngFor="let room of timeArray">
-                  {{ room.time }}
-                </option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="">Select To</label>
-              <select
-                name=""
-                id=""
-                [(ngModel)]="bookingObj.ToTime"
-                class="form-control"
-              >
-                <option [value]="room.timeId" *ngFor="let room of timeArray">
-                  {{ room.time }}
-                </option>
-              </select>
-            </div>
+<div class="col-md-6" >
+  <label for="">Select Room</label>
+  <select name="" id="" [(ngModel)]="bookingObj.roomId" class="form-control" >
+    <option [value]="room.roomId" *ngFor="let room of roomsArray">{{room.roomName}}</option>
+  </select>
+</div>
+<div class="col-md-6" >
+  <label for="">Select Date</label>
+  <input type="date" [(ngModel)]="bookingObj.bookingDate" class="form-control">
+</div>
+<div class="col-md-6">
+  <label for="">Select from</label>
+  <select name="" id="" [(ngModel)]="bookingObj.FromTime" class="form-control">
+    <option [value]="room.timeId" *ngFor="let room of timeArray">{{room.time}}</option>
+  </select>
+</div>
+<div class="col-md-6">
+  <label for="">Select To</label >
+  <select name="" id="" [(ngModel)]="bookingObj.ToTime" class="form-control">
+    <option [value]="room.timeId" *ngFor="let room of timeArray">{{room.time}}</option>
+  </select>
+</div>
+
           </div>
         </div>
         <div class="modal-footer">
@@ -103,13 +73,7 @@
           >
             Close
           </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="createBooking()"
-          >
-            Save
-          </button>
+          <button type="button" class="btn btn-primary" (click)="createBooking()">Save</button>
         </div>
       </div>
     </div>
