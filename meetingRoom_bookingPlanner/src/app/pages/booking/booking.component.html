@@ -19,7 +19,7 @@
 
       <tr style="width: 4%" *ngFor="let time of timeArray">
         <td class="tbBorder">{{ time.time }}</td>
-        <td class="tdBorder" *ngFor="let booking of roomsArray" [ngClass]="checkBooking(booking.roomId,time.timeId)?'bg-success':''"></td>
+        <td class="tdBorder" *ngFor="let booking of roomsArray" [ngClass]="checkBooking(booking.roomId,time.timeId)?'bg-success':''" ></td>
       </tr>
     </table>
   </div>
@@ -74,6 +74,7 @@
             Close
           </button>
           <button type="button" class="btn btn-primary" (click)="createBooking()">Save</button>
+          <button type="button" class="btn btn-primary" >Update</button>
         </div>
       </div>
     </div>

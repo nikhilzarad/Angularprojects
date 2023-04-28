@@ -53,8 +53,8 @@ export class RoomsComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.result) {
           this.roomObj=res.data;
-          this.getRoomsByClientId();
           alert('Room added successfully');
+          this.getRoomsByClientId();
 
         } else {
           alert(res.message);

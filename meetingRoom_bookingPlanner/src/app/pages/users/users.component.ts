@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  userForm:boolean=false;
   parseData: any;
   showClient: boolean = false;
   clientList: any[] = [];
@@ -61,6 +62,7 @@ export class UsersComponent implements OnInit {
         this.userList = res.data;
       });
   }
+
   saveUser() {
     this.http
       .post(
@@ -77,9 +79,43 @@ export class UsersComponent implements OnInit {
             this.userObj.clientId = this.parseData.clientId;
             this.getUserByClientId();
           }
-        } else {
+        } else  {
           alert(res.message);
         }
       });
+  }
+  onDelete(Deleteid:number){
+    const isDelete = confirm('Are you sure want to Delete?');
+      if (isDelete == true) {
+    this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/DeleteUsersById?id='+Deleteid,this.userObj).subscribe((res:any)=>{
+      if (res.result) {
+        this.getAllUser();
+        alert('User Deleted Sucessfully');
+      } else {
+        alert(res.message);
+      }
+   })
+   }}
+   updateUser() {
+    this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/UpdateUser',this.userObj).subscribe((res:any)=>{
+        if (res.result) {
+          alert('User updated Successfully');
+          this.getAllUser();
+        } else {
+          alert(res.message);
+        }
+      });}
+      editRecord(id:number){
+        this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/GetUsersById?id='+id).subscribe((res:any)=>{
+          if (res.result) {
+            this.userObj = res.data;
+          } else {
+            alert(res.message);
+          }
+       })
+      }
+
+  formOpen(){
+    this.userForm=true;
   }
 }

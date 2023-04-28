@@ -84,6 +84,7 @@ export class BookingComponent implements OnInit {
     }
   }
 
+
   getTimeList() {
     this.http
       .get('http://onlinetestapi.gerasim.in/api/Meeting/GetTimeList')

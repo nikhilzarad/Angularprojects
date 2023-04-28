@@ -1,8 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-7">
+    <div [ngClass]="userForm?'col-md-7':'col-md-12'">
       <div class="card">
-        <div class="card-header bg-success">User Data</div>
+        <div class="card-header bg-success">
+          <div class="row">
+            <div class="col-md-6">User Portal</div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <button class="btn btn-primary" (click)="formOpen()">
+                Create User
+              </button>
+            </div>
+          </div>
+        </div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-4" *ngFor="let item of userList">
@@ -16,6 +25,16 @@
                   <p class="card-text">
                     {{ item.userName }} - {{ item.isActive }}
                   </p>
+                  <button
+                class="btn btn-sm btn-primary me-2"
+                (click)="editRecord(item.userId)"
+                (click)="formOpen()"
+              >
+                Edit
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="onDelete(item.userId)">
+                Delete
+              </button>
                 </div>
               </div>
             </div>
@@ -23,9 +42,9 @@
         </div>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" *ngIf="userForm">
       <div class="card">
-        <div class="card-header bg-success">Create User</div>
+        <div class="card-header bg-success">User Form</div>
         <div class="card-body">
           <form action="">
             <div class="row">
@@ -96,8 +115,11 @@
                   <button class="btn btn-primary">Reset</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-success" (click)="saveUser()">
+                  <button class="btn btn-success" (click)="saveUser()" *ngIf="userObj.userId == 0">
                     Save
+                  </button>
+                  <button class="btn btn-success" (click)="updateUser()" *ngIf="userObj.userId !== 0">
+                    update
                   </button>
                 </div>
               </div>

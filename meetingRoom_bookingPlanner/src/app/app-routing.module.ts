@@ -22,7 +22,7 @@ const routes: Routes = [
     children: [
       { path: 'admin-Dashboard', component: AdminDashboardComponent },
       { path: 'packages', component: PackagesComponent },
-      { path: 'client', component: ClientComponent },
+      { path: 'clients', component: ClientComponent },
       { path: 'package-Activation', component: PackageActivationComponent },
       { path: 'users', component: UsersComponent },
     ],
@@ -32,7 +32,8 @@ const routes: Routes = [
     component: ClientLayoutComponent,
     children: [
       { path: 'client-Dashboard', component: ClientAdminDashboardComponent },
-      { path: 'rooms', component: RoomsComponent },
+      { path: 'client-rooms', component: RoomsComponent },
+      { path: 'client-booking', component: BookingComponent },
       { path: 'client-User', component: UsersComponent },
     ],
   }, //for the clientAdmin Acess
@@ -41,7 +42,7 @@ const routes: Routes = [
     component: UserLayoutComponent,
     children: [
       { path: 'user-Dashboard', component: ClientUserDashboardComponent },
-      { path: 'booking', component: BookingComponent },
+      { path: 'user-booking', component: BookingComponent },
     ],
   }, //for the clientUser Acess
 ];

@@ -33,8 +33,9 @@ export class ClientComponent implements OnInit{
   })
  }
  addNewClient(){
-  this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/AddClients').subscribe((res:any)=>{
+  this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/AddClients',this.clientObj).subscribe((res:any)=>{
     this.clientObj=res.data;
+    this.getAllClient();
   })
  }
 
