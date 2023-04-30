@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #fff;
+}
+.navbar-brand {
+  font-family: "Bruno Ace", cursive;
+
+  font-size: 28px;
+  color: #e53595;
+}
+.navbar-brand span {
+  font-size: 10px;
+  justify-content: end;
+  color: black;
+}
+.nav-item {
+  font-family: "Goldman", cursive;
+}
+.navbar-nav li:hover {
+  font-size: 18px;
+}
+.loginName {
+  font-family: "Wallpoet", cursive;
+}
