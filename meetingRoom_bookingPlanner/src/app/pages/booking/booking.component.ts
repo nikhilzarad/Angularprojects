@@ -11,15 +11,16 @@ export class BookingComponent implements OnInit {
   roomsArray: any[] = [];
   bookingArray: any[] = [];
   userDetails: any;
+  bookingData: any;
   bookingObj: any = {
-    BookingId: 0,
-    RoomId: 0,
-    UserId: 0,
-    BookingDate: '2023-04-25T10:08:47.970Z',
-    FromTime: '',
-    ToTime: '',
-    CreatedDate: '2023-04-25T10:08:47.970Z',
-    LastUpdated: '2023-04-25T10:08:47.970Z',
+    bookingId: 0,
+    roomId: 0,
+    userId: 0,
+    bookingDate: '2023-04-25T10:08:47.970Z',
+    fromTime: '',
+    toTime: '',
+    createdDate: '2023-04-25T10:08:47.970Z',
+    lastUpdated: '2023-04-25T10:08:47.970Z',
   };
 
   constructor(private http: HttpClient) {
@@ -44,6 +45,7 @@ export class BookingComponent implements OnInit {
       )
       .subscribe((res: any) => {
         if (res.result) {
+          this.bookingObj = res.data;
           this.getAllBooking();
           this.btnCloseTrig();
           alert('booking done');
@@ -62,6 +64,7 @@ export class BookingComponent implements OnInit {
         this.bookingArray = res.data;
       });
   }
+
   getRoomSList() {
     this.http
       .get(
@@ -73,17 +76,16 @@ export class BookingComponent implements OnInit {
       });
   }
   checkBooking(roomid: number, timeid: number) {
-    const bookingData = this.bookingArray.find(
+    this.bookingData = this.bookingArray.find(
       (m) => m.roomId == roomid && (m.fromTime == timeid || m.toTime == timeid)
     );
 
-    if (bookingData) {
+    if (this.bookingData) {
       return true;
     } else {
       return false;
     }
   }
-
 
   getTimeList() {
     this.http
@@ -105,4 +107,24 @@ export class BookingComponent implements OnInit {
       modal.style.display = 'none';
     }
   }
+  // onDelete(Deleteid: number) {
+  //   debugger;
+  //   const isDelete = confirm('Are you sure want to Delete?');
+  //   if (isDelete == true) {
+  //     this.http
+  //       .post(
+  //         'http://onlinetestapi.gerasim.in/api/Meeting/DeleteBookingById?id=' +
+  //           Deleteid,
+  //         this.bookingObj
+  //       )
+  //       .subscribe((res: any) => {
+  //         if (res.result) {
+  //           alert('Booking Deleted Sucessfully');
+  //           this.getAllBooking();
+  //         } else {
+  //           alert(res.message);
+  //         }
+  //       });
+  //   }
+  // }
 }
