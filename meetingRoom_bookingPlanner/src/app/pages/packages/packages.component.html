@@ -1,11 +1,48 @@
-<div class="row">
+
+<div class="row headeTag text-center carousel-content d-flex">
+<div class="tagline mt-5"><span><h3>The Royal WorkSpace- An Eco-friendly Meeting</h3></span></div>
+<div class="textinline">
+  <ul class="list-inline d-flex justify-content-center">
+    <li class="list-inline-item mx-3">
+      <a href="#"
+        ><i class="	fas fa-snowflake"></i>
+      <br> Air Conditioning</a>
+    </li>
+    <li class="list-inline-item mx-3">
+      <a href="#"
+        ><i
+          class="	fas fa-bullhorn"
+        ></i
+      ><br> Emergency Services</a>
+    </li>
+
+    <li class="list-inline-item mx-3 ">
+      <a href="#"
+        ><i class="fa fa-phone"></i
+      ><br>24x7 Hotel Assistance</a>
+    </li>
+    <li class="list-inline-item mx-3">
+      <a href="#"
+        ><i class="fa fa-check"></i
+      ><br>Strict Hygiene Protocols</a>
+    </li>
+    <li class="list-inline-item mx-3">
+      <a href="#"
+        ><i class="	fa fa-car"></i
+      ><br>Free Parking</a>
+    </li>
+
+  </ul>
+</div>
+</div>
+<div class="row mt-5">
   <div [ngClass]="packageForm ? 'col-md-7' : 'col-md-12'">
     <div class="card">
-      <div class="card-header bg-success">
+      <div class="card-header headportal">
         <div class="row">
           <div class="col-md-6">Packages Portal</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <button class="btn btn-primary" (click)="formOpen()">
+            <button class="btn btnCreate" (click)="formOpen()">
               Create Packages
             </button>
           </div>
@@ -14,32 +51,32 @@
       <div class="card-body">
         <table class="table table-bordered">
           <thead>
-            <tr>
+            <tr class="table-primary">
               <th>Sr No</th>
               <th>Package Name</th>
-              <th>cost</th>
+              <th>Cost</th>
               <th>Description</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let package of packagesArray; let sr = index">
-              <td>{{ sr + 1 }}</td>
-              <td>{{ package.packageName }}</td>
+            <tr  *ngFor="let package of packagesArray; let sr = index">
+              <td class="table-danger text-center">{{ sr+1 }}</td>
+              <td >{{ package.packageName }}</td>
               <td>{{ package.packageCost }}</td>
               <td>{{ package.packageDescription }}</td>
               <td>{{ package.isPackageActive }}</td>
               <td class="text-center">
                 <button
-                  class="btn btn-sm btn-primary me-2"
+                  class="btn btnCreate me-2"
                   (click)="editRecord(package.packageId)"
                   (click)="formOpen()"
                 >
                   Edit
                 </button>
                 <button
-                  class="btn btn-sm btn-danger"
+                  class="btn btn-colourr "
                   (click)="onDelete(package.packageId)"
                 >
                   Delete
@@ -54,7 +91,7 @@
   <div *ngIf="packageForm" class="col-md-5">
     <div class="row">
       <div class="card">
-        <div class="card-header bg-success">Create Package</div>
+        <div class="card-header headportal">Package Form</div>
         <div class="card-body">
           <form action="">
             <div class="row">
@@ -99,18 +136,18 @@
               </div>
               <div class="row text-center mt-4">
                 <div class="col-md-6">
-                  <button class="btn btn-primary">Reset</button>
+                  <button class="btn btn-colourr">Reset</button>
                 </div>
                 <div class="col-md-6">
                   <button
-                    class="btn btn-success"
+                    class="btn btnCreate"
                     (click)="createNewPackage()"
                     *ngIf="packageObj.packageId == 0"
                   >
                     Save
                   </button>
                   <button
-                    class="btn btn-success"
+                    class="btn btnCreate"
                     (click)="updatePackage()"
                     *ngIf="packageObj.packageId !== 0"
                   >

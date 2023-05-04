@@ -1,0 +1,24 @@
+.headeTag { font-family: "Bruno Ace", cursive;
+color: #4caf50;
+font-weight: bold;
+text-underline-offset: 2px ;}
+.btn-colourr{
+  background-color:#d40300ba;
+  color: #fff;
+}
+.headportal{
+  font-family: "Bruno Ace", cursive;
+  font-weight: bold;
+  letter-spacing: 3px;}
+
+.btnCreate{
+background-color:#2196f3;
+color: #fff;
+}
+.list-inline-item i{
+font-size: 28px;
+color: #2196f3;
+}
+.list-inline a{
+  color: grey;
+}
