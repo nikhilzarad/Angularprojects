@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rooms.component.css'],
 })
 export class RoomsComponent implements OnInit {
-  isLoader: boolean = false;
   packageForm: boolean = false;
   roomsArray: any[] = [];
   roomObj = {

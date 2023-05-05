@@ -1,39 +1,36 @@
-
 <div class="row headeTag text-center carousel-content d-flex">
-<div class="tagline mt-5"><span><h3>The Royal WorkSpace- An Eco-friendly Meeting</h3></span></div>
-<div class="textinline">
-  <ul class="list-inline d-flex justify-content-center">
-    <li class="list-inline-item mx-3">
-      <a href="#"
-        ><i class="	fas fa-snowflake"></i>
-      <br> Air Conditioning</a>
-    </li>
-    <li class="list-inline-item mx-3">
-      <a href="#"
-        ><i
-          class="	fas fa-bullhorn"
-        ></i
-      ><br> Emergency Services</a>
-    </li>
 
-    <li class="list-inline-item mx-3 ">
-      <a href="#"
-        ><i class="fa fa-phone"></i
-      ><br>24x7 Hotel Assistance</a>
-    </li>
-    <li class="list-inline-item mx-3">
-      <a href="#"
-        ><i class="fa fa-check"></i
-      ><br>Strict Hygiene Protocols</a>
-    </li>
-    <li class="list-inline-item mx-3">
-      <a href="#"
-        ><i class="	fa fa-car"></i
-      ><br>Free Parking</a>
-    </li>
+  <div class="tagline mt-5">
+    <span><h2>The Royal WorkSpace- An Eco-friendly Meeting</h2></span>
+  </div>
+  <div class="textinline mt-5">
+    <ul class="list-inline d-flex justify-content-center">
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-snowflake"></i> <br />
+          Air Conditioning</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-bullhorn"></i><br />
+          Emergency Services</a
+        >
+      </li>
 
-  </ul>
-</div>
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-phone"></i><br />24x7 Hotel Assistance</a>
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fa fa-check"></i><br />Strict Hygiene Protocols</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-car"></i><br />Free Parking</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="row mt-5">
   <div [ngClass]="packageForm ? 'col-md-7' : 'col-md-12'">
@@ -61,9 +58,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr  *ngFor="let package of packagesArray; let sr = index">
-              <td class="table-danger text-center">{{ sr+1 }}</td>
-              <td >{{ package.packageName }}</td>
+            <tr *ngFor="let package of packagesArray; let sr = index">
+              <td class="table-danger text-center">{{ sr + 1 }}</td>
+              <td>{{ package.packageName }}</td>
               <td>{{ package.packageCost }}</td>
               <td>{{ package.packageDescription }}</td>
               <td>{{ package.isPackageActive }}</td>
@@ -76,7 +73,7 @@
                   Edit
                 </button>
                 <button
-                  class="btn btn-colourr "
+                  class="btn btn-colourr"
                   (click)="onDelete(package.packageId)"
                 >
                   Delete
@@ -93,7 +90,7 @@
       <div class="card">
         <div class="card-header headportal">Package Form</div>
         <div class="card-body">
-          <form action="">
+          <form #myForm="ngForm">
             <div class="row">
               <div class="col-md-6">
                 <label for="">Package Name</label>
@@ -136,7 +133,9 @@
               </div>
               <div class="row text-center mt-4">
                 <div class="col-md-6">
-                  <button class="btn btn-colourr">Reset</button>
+                  <button class="btn btn-colourr" (click)="clearForm()">
+                    Reset
+                  </button>
                 </div>
                 <div class="col-md-6">
                   <button

@@ -1,0 +1,33 @@
+.headeTag {
+  font-family: "Estonia", cursive;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.btn-colourr {
+  background-color: #d40300ba;
+  color: #fff;
+}
+.headportal {
+  font-family: "Bruno Ace", cursive;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.btnCreate {
+  background-color: #2196f3;
+  color: #fff;
+}
+.list-inline-item i {
+  font-size: 28px;
+  color: #2196f3;
+}
+.list-inline a {
+  color: #f06292;
+}
+.tagline h2 {
+  font-family: "Estonia", cursive;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #2a87c4;
+}

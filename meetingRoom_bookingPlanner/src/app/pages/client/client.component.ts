@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-client',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit{
+  @ViewChild('myForm') myForm!: NgForm;
   packageForm:boolean=false;
   clientArray:any[]=[];
   clientObj:any={
@@ -72,9 +74,9 @@ export class ClientComponent implements OnInit{
       }
     });
 }
-
-
-
+clearForm() {
+  this.myForm.resetForm();
+}
  formOpen(){
   this.packageForm=true;
  }

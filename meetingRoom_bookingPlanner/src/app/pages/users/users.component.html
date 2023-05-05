@@ -1,12 +1,45 @@
+<div class="row headeTag text-center carousel-content d-flex">
+  <div class="tagline mt-5">
+    <span><h2>The Royal WorkSpace- An Eco-friendly Meeting</h2></span>
+  </div>
+  <div class="textinline mt-5">
+    <ul class="list-inline d-flex justify-content-center">
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-snowflake"></i> <br />
+          Air Conditioning</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-bullhorn"></i><br />
+          Emergency Services</a
+        >
+      </li>
+
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-phone"></i><br />24x7 Hotel Assistance</a>
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fa fa-check"></i><br />Strict Hygiene Protocols</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-car"></i><br />Free Parking</a>
+      </li>
+    </ul>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <div [ngClass]="userForm?'col-md-7':'col-md-12'">
       <div class="card">
-        <div class="card-header bg-success">
+        <div class="card-header headportal">
           <div class="row">
-            <div class="col-md-6">User Portal</div>
+            <div class="col-md-6 ">User Portal</div>
             <div class="col-md-6 d-flex justify-content-end">
-              <button class="btn btn-primary" (click)="formOpen()">
+              <button class="btn btnCreate" (click)="formOpen()">
                 Create User
               </button>
             </div>
@@ -16,7 +49,7 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let item of userList">
               <div
-                class="card text-white bg-info mb-3"
+                class="card cardd mb-3"
                 style="max-width: 18rem"
               >
                 <div class="card-header">{{ item.role }}</div>
@@ -26,13 +59,13 @@
                     {{ item.userName }} - {{ item.isActive }}
                   </p>
                   <button
-                class="btn btn-sm btn-primary me-2"
+                class="btn btnCreate me-2"
                 (click)="editRecord(item.userId)"
                 (click)="formOpen()"
               >
                 Edit
               </button>
-              <button class="btn btn-sm btn-danger" (click)="onDelete(item.userId)">
+              <button class="btn btn-colourr" (click)="onDelete(item.userId)">
                 Delete
               </button>
                 </div>
@@ -44,7 +77,7 @@
     </div>
     <div class="col-md-5" *ngIf="userForm">
       <div class="card">
-        <div class="card-header bg-success">User Form</div>
+        <div class="card-header headportal">User Form</div>
         <div class="card-body">
           <form action="">
             <div class="row">
@@ -112,13 +145,13 @@
               </div>
               <div class="row text-center mt-4">
                 <div class="col-md-6">
-                  <button class="btn btn-primary">Reset</button>
+                  <button class="btn btn-colourr">Reset</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-success" (click)="saveUser()" *ngIf="userObj.userId == 0">
+                  <button class="btn btnCreate" (click)="saveUser()" *ngIf="userObj.userId == 0">
                     Save
                   </button>
-                  <button class="btn btn-success" (click)="updateUser()" *ngIf="userObj.userId !== 0">
+                  <button class="btn btnCreate" (click)="updateUser()" *ngIf="userObj.userId !== 0">
                     update
                   </button>
                 </div>

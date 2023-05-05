@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { NgForm } from '@angular/forms';
+
 import { PackageService } from 'src/app/core/service/package.service';
 
 @Component({
@@ -7,6 +10,8 @@ import { PackageService } from 'src/app/core/service/package.service';
   styleUrls: ['./packages.component.css'],
 })
 export class PackagesComponent implements OnInit {
+  @ViewChild('myForm') myForm!: NgForm;
+
   packageForm: boolean = false;
 
   packagesArray: any[] = [];
@@ -76,5 +81,8 @@ export class PackagesComponent implements OnInit {
   }
   formOpen() {
     this.packageForm = true;
+  }
+  clearForm() {
+    this.myForm.resetForm();
   }
 }

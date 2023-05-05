@@ -1,12 +1,45 @@
+<div class="row headeTag text-center carousel-content d-flex">
+  <div class="tagline mt-5">
+    <span><h2>The Royal WorkSpace- An Eco-friendly Meeting</h2></span>
+  </div>
+  <div class="textinline mt-5">
+    <ul class="list-inline d-flex justify-content-center">
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-snowflake"></i> <br />
+          Air Conditioning</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-bullhorn"></i><br />
+          Emergency Services</a
+        >
+      </li>
+
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-phone"></i><br />24x7 Hotel Assistance</a>
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fa fa-check"></i><br />Strict Hygiene Protocols</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-car"></i><br />Free Parking</a>
+      </li>
+    </ul>
+  </div>
+</div>
 <div class="row">
   <div [ngClass]="packageForm ? 'col-md-7' : 'col-md-12'">
     <div class="card">
-      <div class="card-header bg-success">
+      <div class="card-header headportal">
         <div class="row">
-          <div class="col-md-6">Packages Portal</div>
+          <div class="col-md-6">Client Portal</div>
           <div class="col-md-6 d-flex justify-content-end">
-            <button class="btn btn-primary" (click)="formOpen()">
-              Create Packages
+            <button class="btn btnCreate" (click)="formOpen()">
+              Create Client
             </button>
           </div>
         </div>
@@ -14,7 +47,7 @@
       <div class="card-body">
         <table class="table table-bordered">
           <thead>
-            <tr>
+            <tr class="table-primary">
               <th>Sr No</th>
               <th>Client Name</th>
               <th>Company Name</th>
@@ -25,20 +58,20 @@
           </thead>
           <tbody>
             <tr *ngFor="let client of clientArray; let sr = index">
-              <td>{{ sr + 1 }}</td>
+              <td class="table-danger text-center">{{ sr + 1 }}</td>
               <td>{{ client.clientName }}</td>
               <td>{{ client.companyName }}</td>
               <td>{{ client.address }}</td>
               <td>{{ client.employeeStrength }}</td>
               <td class="text-center">
                 <button
-                  class="btn btn-sm btn-primary me-2"
+                  class="btn btnCreate me-2"
                   (click)="editRecord(client.clientId)"
                   (click)="formOpen()"
                 >
                   Edit
                 </button>
-                <button class="btn btn-sm btn-danger" (click)="onDelete(client.clientId)">
+                <button class="btn btn-colourr" (click)="onDelete(client.clientId)">
                   Delete
                 </button>
               </td>
@@ -51,9 +84,9 @@
   <div *ngIf="packageForm" class="col-md-5">
     <div class="row">
       <div class="card">
-        <div class="card-header bg-success">Create lient</div>
+        <div class="card-header headportal">Client Form</div>
         <div class="card-body">
-          <form action="">
+          <form #myForm="ngForm">
             <div class="row">
               <div class="col-md-6">
                 <label for="">Client Name</label>
@@ -148,18 +181,18 @@
 
               <div class="row text-center mt-4">
                 <div class="col-md-6">
-                  <button class="btn btn-primary">Reset</button>
+                  <button class="btn btn-colourr" (click)="clearForm()">Reset</button>
                 </div>
                 <div class="col-md-6">
                   <button
-                    class="btn btn-success"
+                    class="btn btnCreate"
                     (click)="addNewClient()"
                     *ngIf="clientObj.clientId == 0"
                   >
                     Save
                   </button>
                   <button
-                    class="btn btn-success"
+                    class="btn btnCreate"
                     (click)="updateClient()"
                     *ngIf="clientObj.clientId !== 0"
                   >

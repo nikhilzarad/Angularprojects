@@ -1,8 +1,41 @@
+<div class="row headeTag text-center carousel-content d-flex">
+  <div class="tagline mt-5">
+    <span><h2>The Royal WorkSpace- An Eco-friendly Meeting</h2></span>
+  </div>
+  <div class="textinline mt-5">
+    <ul class="list-inline d-flex justify-content-center">
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-snowflake"></i> <br />
+          Air Conditioning</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fas fa-bullhorn"></i><br />
+          Emergency Services</a
+        >
+      </li>
+
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-phone"></i><br />24x7 Hotel Assistance</a>
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"
+          ><i class="fa fa-check"></i><br />Strict Hygiene Protocols</a
+        >
+      </li>
+      <li class="list-inline-item mx-3">
+        <a href="#"><i class="fa fa-car"></i><br />Free Parking</a>
+      </li>
+    </ul>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header bg-success">
+        <div class="card-header headportal">
           <div class="row">
             <div class="col-md-6">Package Activation Status</div>
           </div>
@@ -11,10 +44,10 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let package of packageList">
               <div
-                class="card text-white bg-secondary mb-3"
+                class="card cardd mb-3"
                 style="max-width: 18rem"
               >
-                <h5><div class="card-header">Package Name - {{ package.packageName }}</div></h5>
+                <h6><div class="card-header">Package Name - {{ package.packageName }}</div></h6>
                 <div class="card-body">
                   <h6 class="card-title">Active Status - {{ package.isPackageActive }}</h6>
 
@@ -27,4 +60,6 @@
     </div>
   </div>
 </div>
+</div>
+
 
