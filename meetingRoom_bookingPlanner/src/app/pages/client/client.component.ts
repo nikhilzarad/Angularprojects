@@ -36,8 +36,12 @@ export class ClientComponent implements OnInit{
  }
  addNewClient(){
   this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/AddClients',this.clientObj).subscribe((res:any)=>{
-    this.clientObj=res.data;
-    this.getAllClient();
+    if(res.result){
+
+      this.clientObj=res.data;
+        this.getAllClient();
+        alert('Client Added Succefully')
+    }else{alert(res.message);}
   })
  }
 
