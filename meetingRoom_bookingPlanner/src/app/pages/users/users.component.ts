@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
+  @ViewChild('myForm') myForm!: NgForm;
   userForm:boolean=false;
   parseData: any;
   showClient: boolean = false;
@@ -25,13 +27,13 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient) {
     const localUserData = localStorage.getItem('loginInfo');
     if (localUserData != null) {
-      const parseData = JSON.parse(localUserData);
-      if (parseData.role == 'Admin') {
+      this.parseData = JSON.parse(localUserData);
+      if (this.parseData.role == 'Admin') {
         this.getAllUser();
         this.getAllClient();
         this.showClient = true;
       } else {
-        this.userObj.clientId = parseData.clientId;
+        this.userObj.clientId = this.parseData.clientId;
         this.getUserByClientId();
       }
     }
@@ -75,6 +77,8 @@ export class UsersComponent implements OnInit {
             this.getAllUser();
             this.getAllClient();
             this.showClient = true;
+            alert('User Added Successfully');
+            this.clearForm();
           } else {
             this.userObj.clientId = this.parseData.clientId;
             this.getUserByClientId();
@@ -117,5 +121,8 @@ export class UsersComponent implements OnInit {
 
   formOpen(){
     this.userForm=true;
+  }
+  clearForm() {
+    this.myForm.resetForm();
   }
 }

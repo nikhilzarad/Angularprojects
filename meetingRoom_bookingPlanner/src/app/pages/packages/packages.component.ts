@@ -39,6 +39,7 @@ export class PackagesComponent implements OnInit {
       if (res.result) {
         this.loadPackage();
         alert('Package added Sucessfully');
+        this.clearForm();
       } else {
         alert(res.message);
       }
@@ -61,6 +62,7 @@ export class PackagesComponent implements OnInit {
         if (res.result) {
           this.loadPackage();
           alert('Package updated Sucessfully');
+          this.clearForm();
         } else {
           alert(res.message);
         }

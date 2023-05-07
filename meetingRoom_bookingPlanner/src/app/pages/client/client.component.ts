@@ -41,6 +41,7 @@ export class ClientComponent implements OnInit{
       this.clientObj=res.data;
         this.getAllClient();
         alert('Client Added Succefully')
+        this.clearForm();
     }else{alert(res.message);}
   })
  }

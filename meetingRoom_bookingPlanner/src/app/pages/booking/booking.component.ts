@@ -45,7 +45,6 @@ export class BookingComponent implements OnInit {
       )
       .subscribe((res: any) => {
         if (res.result) {
-          this.bookingObj = res.data;
           this.getAllBooking();
           this.btnCloseTrig();
           alert('booking done');
