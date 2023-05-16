@@ -1,6 +1,6 @@
 ========== HEADER ==========
 .nav__logo
-Chris
+Nikhil
 
 .nav__link
 Home - Skills - Qualification - Services - Projects - Contact
@@ -8,14 +8,14 @@ Home - Skills - Qualification - Services - Projects - Contact
 
 ========== HOME ==========
 .home__title
-Hi, I’m Chris <br>
+Hi, I’m Nikhil <br>
 Frontend Developer <br>
-Based In Perú <br>
+Based In Pune,Maharashtra <br>
 
 .home__social
-https://www.linkedin.com/
-https://github.com/
-https://dribbble.com/
+linkedin.com/in/nikhil-zarad-408174141
+github.com/nikhilzarad
+gmail.com/nikhilzarad
 
 .home__info-title
 BIOGRAPHY
@@ -26,17 +26,17 @@ COMPLETED PROJECTS
 COMPANIES WORKED
 
 .home__info-description .home__info-number
-Hi, I'm Chris, Frontend Developer.
+Hi, I'm Nikhil, Frontend Developer.
 Passionate about designing beautiful web
-interfaces. Based in Perú.
+interfaces. Based in India.
 
-Lima, Perú <br>
-chrismayer@email.com <br>
-+51 9876543210 <br>
+Pune,Maharashtra <br>
+nikhilzarad@gmail.com <br>
++91 8378945050 <br>
 
-Website Design <br>
-UI/UX Design <br>
-Animation <br>
+Website Designs <br>
+UI Designs <br>
+Crud Applications<br>
 
 08+
 
@@ -58,7 +58,7 @@ Web Designer
 
 .skills__name .skills__subtitle
 HTML
-Intermediate
+Advanced
 
 CSS
 Advanced
@@ -66,26 +66,26 @@ Advanced
 JavaScript
 Intermediate
 
-React
-Basic
+Angular
+Intermediate
 
 Git
 Intermediate
 
 
-Figma
+Bootstrap
 Advanced
 
-Sketch
+Angular Material
+Advanced
+
+DotNet
 Basic
 
-Adobe XD
-Intermediate
-
-InvisionApp
+Java
 Basic
 
-Photoshop
+SQL
 Intermediate
 
 
@@ -101,30 +101,21 @@ Education
 Work
 
 .qualification__name .qualification__country .qualification__year
-Master In Web Developer
-Perú - University
-2014 - 2019
+Bachelor of Engineering
+Pune - University
+2017 - 2020
 
-UI/UX Design
-Institute - Spain
-2017 - 2019
-
-Computer Engineer
-Institute - Perú
-2019 - 2022
-
+Web Development
+Institute - CodeFirst
+2021 - 2022
 
 Fontend Developer
-Adobe - Spain
-2014 - 2019
+Nvidia  - Pune
+June-2021 - feb-2022
 
-Software Engineer
-Microsoft - Perú
-2018 - 2020
-
-Graphic Designer
-Figma - Perú
-2020 - Present
+System Engineer
+Infosys  - Pune
+Feb-2022 - Present
 
 
 ========== SERVICES ==========
@@ -135,8 +126,8 @@ Services
 What i offer
 
 .services__title .services__description
-UI/UX <br>
-Designer
+Fontend <br>
+Developer
 
 Service that provides the best quality and at 
 the request of the client, with professional 
@@ -145,8 +136,8 @@ work and customer support.
 Website <br>
 Design
 
-Digital <br>
-Animator
+UI <br>
+Designer
 
 
 ========== PROJECTS ==========
@@ -163,7 +154,7 @@ Modern Website
 View demo
 
 Web
-ECommerce Store
+Lencard Ticketing Tool Application on Angular
 
 Design
 Application Design
@@ -179,20 +170,13 @@ Testimonial
 My client saying
 
 .testimonial__description .testimonial__name .testimonial__subtitle
-“Working with Chris is to give a good 
+“Working with Nikhil is to give a good 
 impression, I carry out my project at a good 
 cost, with excellent quality and attention. 
 Great service and recommended.”
 
-Klay Harris
+Shankar Bodke
 Client
-
-Mary Lens
-Client
-
-Anna Chel
-Client
-
 
 ========== CONTACT ==========
 .section__title
@@ -207,17 +191,17 @@ Write me your project
 
 .contact__data-title .contact__data-info .contact__button
 Email
-chrismayer@email.com
+nikhilzarad@gmail.com
 
 Whatsapp
-+51 9876543210
++91 8378945050
 Write me
 
 <!-- Insert a real number plus country code -->
-https://api.whatsapp.com/send?phone=519876543210&text=Hello, more information!
+https://api.whatsapp.com/send?phone=+918378945050&text=Hello, connect Me for more information!
 
 Messenger
-@chris.fb123
+@nikhil.zarad7
 Write me
 
 <!-- Insert your brand name or profile -->
@@ -256,7 +240,7 @@ Submit
 // To clear the input field
 ========== FOOTER ==========
 .footer__title
-Chris
+Nikhil
 
 <p>
 Frontend Developer
@@ -272,7 +256,7 @@ https://github.com/
 https://dribbble.com/
 
 .footer__copy
-&#169; Copyright Bedimcode. All rights reserved
+&#169; Copyright nikhilzarad. All rights reserved
 
 
 
