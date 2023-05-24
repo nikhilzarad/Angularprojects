@@ -10,7 +10,6 @@
 }
 .navbar-brand {
   font-family: "Bruno Ace SC", cursive;
-
   font-size: 28px;
   color: #e53595;
 }
@@ -95,14 +94,27 @@
 .section__title {
   font-family: "Goldman", cursive;
 }
-
-.skills__title{font-family: "Bruno Ace SC", cursive;}
+.skills__title {
+  font-family: "Bruno Ace SC", cursive;
+}
 /* Animation skills */
 
 /*=============== QUALIFICATION ===============*/
-
+.section__subtitle{font-family: "Goldman", cursive;}
+.qualification__title{
+  font-family: "Bruno Ace SC", cursive;
+}
 /*=============== SERVICES ===============*/
-
+.service__Icon{
+font-size: 36px;
+}
+.card-title{font-family: "Bruno Ace SC", cursive;}
+.card-text{font-family: Georgia, "Times New Roman", Times, serif;}
+.card{
+position: relative;
+border: 2px solid skyblue;
+border-radius: 50px;
+}
 /*=============== PROJECTS ===============*/
 
 /* Swiper class */

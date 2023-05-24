@@ -126,7 +126,7 @@ Services
 What i offer
 
 .services__title .services__description
-Fontend <br>
+Frontend <br>
 Developer
 
 Service that provides the best quality and at 
