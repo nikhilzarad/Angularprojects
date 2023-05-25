@@ -205,11 +205,11 @@ Messenger
 Write me
 
 <!-- Insert your brand name or profile -->
-https://m.me/bedimcode
+https://m.me/nikhil.zarad7
 
 .contact__form-tag | placeholder
-Names
-Write your names
+Name
+Write your name
 
 Mail
 Write your email
