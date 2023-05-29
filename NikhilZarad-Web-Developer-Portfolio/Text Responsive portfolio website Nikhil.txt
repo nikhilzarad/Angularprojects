@@ -1,0 +1,262 @@
+========== HEADER ==========
+.nav__logo
+Nikhil
+
+.nav__link
+Home - Skills - Qualification - Services - Projects - Contact
+
+
+========== HOME ==========
+.home__title
+Hi, I’m Nikhil <br>
+Frontend Developer <br>
+Based In Pune,Maharashtra <br>
+
+.home__social
+linkedin.com/in/nikhil-zarad-408174141
+github.com/nikhilzarad
+gmail.com/nikhilzarad
+
+.home__info-title
+BIOGRAPHY
+CONTACT
+SERVICES
+YEARS OF EXPERIENCE
+COMPLETED PROJECTS
+COMPANIES WORKED
+
+.home__info-description .home__info-number
+Hi, I'm Nikhil, Frontend Developer.
+Passionate about designing beautiful web
+interfaces. Based in India.
+
+Pune,Maharashtra <br>
+nikhilzarad@gmail.com <br>
++91 8378945050 <br>
+
+Website Designs <br>
+UI Designs <br>
+Crud Applications<br>
+
+08+
+
+24+
+
+07+
+
+
+========== SKILLS ==========
+.section__title
+Skills
+
+.section__subtitle
+My favorite skills
+
+.skills__title
+Frontend Developer 
+Web Designer
+
+.skills__name .skills__subtitle
+HTML
+Advanced
+
+CSS
+Advanced
+
+JavaScript
+Intermediate
+
+Angular
+Intermediate
+
+Git
+Intermediate
+
+
+Bootstrap
+Advanced
+
+Angular Material
+Advanced
+
+DotNet
+Basic
+
+Java
+Basic
+
+SQL
+Intermediate
+
+
+========== QUALIFICATION ==========
+.section__title
+Qualification
+
+.section__subtitle
+Experience & education
+
+.qualification__title
+Education
+Work
+
+.qualification__name .qualification__country .qualification__year
+Bachelor of Engineering
+Pune - University
+2017 - 2020
+
+Web Development
+Institute - CodeFirst
+2021 - 2022
+
+Fontend Developer
+Nvidia  - Pune
+June-2021 - feb-2022
+
+System Engineer
+Infosys  - Pune
+Feb-2022 - Present
+
+
+========== SERVICES ==========
+.section__title
+Services
+
+.section__subtitle
+What i offer
+
+.services__title .services__description
+Frontend <br>
+Developer
+
+Service that provides the best quality and at 
+the request of the client, with professional 
+work and customer support.
+
+Website <br>
+Design
+
+UI <br>
+Designer
+
+
+========== PROJECTS ==========
+.section__title
+Projects
+
+.section__subtitle
+Most recent work
+
+
+.projects__subtitle .projects__title .projects__button
+Web
+Modern Website
+View demo
+
+Web
+Lencard Ticketing Tool Application on Angular
+
+Design
+Application Design
+
+Animation
+Animation Prototypes
+
+========== TESTIMONIAL ==========
+.section__title
+Testimonial
+
+.section__subtitle
+My client saying
+
+.testimonial__description .testimonial__name .testimonial__subtitle
+“Working with Nikhil is to give a good 
+impression, I carry out my project at a good 
+cost, with excellent quality and attention. 
+Great service and recommended.”
+
+Shankar Bodke
+Client
+
+========== CONTACT ==========
+.section__title
+Contact Me
+
+.section__subtitle
+Get in touch
+
+.contact__title
+Talk to me
+Write me your project
+
+.contact__data-title .contact__data-info .contact__button
+Email
+nikhilzarad@gmail.com
+
+Whatsapp
++91 8378945050
+Write me
+
+<!-- Insert a real number plus country code -->
+https://api.whatsapp.com/send?phone=+918378945050&text=Hello, connect Me for more information!
+
+Messenger
+@nikhil.zarad7
+Write me
+
+<!-- Insert your brand name or profile -->
+https://m.me/nikhil.zarad7
+
+.contact__form-tag | placeholder
+Name
+Write your name
+
+Mail
+Write your email
+
+Project
+Write your project
+
+.contact__button
+Submit
+
+========== EMAIL JS CONTACT ==========
+
+// Check if the field has a value
+	// Add and remove color
+
+	// Show message	
+		Write all the input fields 
+
+// serviceID - templateID - #form - publicKey
+	// Show message and add color
+		Message sent 
+	
+	// Remove message after five seconds
+
+	// Send Error
+		OOPS! SOMETHING HAS FAILED...
+
+// To clear the input field
+========== FOOTER ==========
+.footer__title
+Nikhil
+
+<p>
+Frontend Developer
+
+.footer__link
+Home
+Skills
+Projects
+
+.footer__social-link
+https://www.linkedin.com/
+https://github.com/
+https://dribbble.com/
+
+.footer__copy
+&#169; Copyright nikhilzarad. All rights reserved
+
+
+

@@ -1,0 +1,201 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Goldman&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap");
+
+/*=============== HEADER & NAV ===============*/
+.navbar {
+  background-color: #fff;
+}
+.navbar-brand {
+  font-family: "Bruno Ace SC", cursive;
+  font-size: 28px;
+  color: #e53595;
+}
+.nav-item {
+  font-family: "Goldman", cursive;
+}
+.navbar-nav li:hover {
+  font-size: 18px;
+}
+
+/* Show menu */
+
+/* Active link */
+
+/*=============== HOME ===============*/
+.home__title h1 {
+  font-family: "Lora", serif;
+  letter-spacing: 2px;
+}
+.home__social a {
+  text-decoration: none !important;
+  color: black;
+  font-size: large;
+}
+.profile-blob {
+  position: relative;
+  border: 2px solid skyblue;
+
+  border-radius: 6.25rem;
+  align-self: center;
+  place-items: center;
+}
+.home-prifil {
+  width: 160px;
+  height: 290px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-prifil img {
+  width: 150px;
+  zoom: 100%;
+}
+.profileAlign {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home__info-title {
+  font-family: "Goldman", cursive;
+}
+.home__info-number {
+  font-family: "Goldman", cursive;
+}
+.home__info-description {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.home__social a {
+  margin: 15px;
+}
+.home__shape-circle,
+.home__shape-wawes {
+  position: absolute;
+  opacity: 0.2;
+}
+.home__shape-wawes {
+  width: 70px;
+  left: -30px;
+  top: 20px;
+}
+.home__shape-circle {
+  width: 160px;
+  right: -20px;
+  bottom: -20px;
+  transform: rotate(15deg);
+  z-index: -1;
+}
+
+/*=============== SKILLS ===============*/
+.section__title {
+  font-family: "Goldman", cursive;
+}
+.skills__title {
+  font-family: "Bruno Ace SC", cursive;
+}
+/* Animation skills */
+
+/*=============== QUALIFICATION ===============*/
+.section__subtitle {
+  font-family: "Goldman", cursive;
+}
+.qualification__title {
+  font-family: "Bruno Ace SC", cursive;
+}
+/*=============== SERVICES ===============*/
+.service__Icon {
+  font-size: 36px;
+}
+.card-title {
+  font-family: "Bruno Ace SC", cursive;
+}
+.card-text {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.card {
+  position: relative;
+  border: 2px solid skyblue;
+  border-radius: 50px;
+}
+/*=============== PROJECTS ===============*/
+.card_1 img {
+  width: 350px;
+  border: 2px solid skyblue;
+  border-radius: 20px;
+  padding: 5px;
+}
+/* Swiper class */
+.certificate__Name p {
+  font-size: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/*=============== TESTIMONIAL ===============*/
+.testimonial__description {
+  font-size: 26px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.testimonial__name {
+  font-family: "Bruno Ace SC", cursive;
+}
+.testimonial__subtitle {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+/* Swiper class */
+
+/*=============== CONTACT ===============*/
+.contact__data-title {
+  font-family: "Bruno Ace SC", cursive;
+}
+
+.contact__data-info {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.contact__form-tag label {
+  font-family: "Bruno Ace SC", cursive;
+  margin: 5px;
+}
+/* Status color */
+.colour__blue {
+  color: blue;
+}
+.colour__red {
+  color: red;
+}
+.contact__message {
+  font-size: small;
+  position: absolute;
+  bottom: 2.8rem;
+  left: 1.5rem;
+}
+
+/*=============== FOOTER ===============*/
+.list-group-item a {
+  text-decoration: none;
+}
+.footer__title {
+  font-family: "Bruno Ace SC", cursive;
+}
+.footerWork {
+  font-family: "Goldman", cursive;
+}
+.footer__copy {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/*=============== SCROLL BAR ===============*/
+
+/*=============== SCROLL UP ===============*/
+
+/* Show Scroll Up*/
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+
+/* For medium devices */
+
+/* For large devices */
