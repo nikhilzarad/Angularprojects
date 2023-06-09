@@ -5,8 +5,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap");
 
 /*=============== HEADER & NAV ===============*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .navbar {
   background-color: #fff;
+}
+.devicer {
+  width: 50em;
+  display: block;
+  height: 5px;
+  background-color: skyblue;
+  margin: 60px auto 0;
 }
 .navbar-brand {
   font-family: "Bruno Ace SC", cursive;
@@ -18,6 +30,56 @@
 }
 .navbar-nav li:hover {
   font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    display: block;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+  .navbar-toggler-icon {
+    font-size: 15px;
+  }
+  .navbar-nav li {
+    font-size: 10px;
+  }
+  .navbar-nav li:hover {
+    font-size: 12px;
+  }
+  .home__info-description {
+    margin-bottom: 20px;
+  }
+  .ress {
+    margin-left: 15px;
+    padding-top: 5px;
+  }
+  .skills__subtitle {
+    font-size: 10px;
+  }
+  .marginQuery {
+    margin-top: 20px;
+  }
+  .devicer {
+    width: 10em;
+    display: block;
+    height: 3px;
+    background-color: skyblue;
+    margin: 20px auto 0;
+  }
+  .certificate__Name p {
+    font-size: 11px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  .testimonial__description {
+    font-size: 13px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  .footer__copy p {
+    font-size: 11px;
+  }
 }
 
 /* Show menu */
@@ -120,18 +182,19 @@
   position: relative;
   border: 2px solid skyblue;
   border-radius: 50px;
+  overflow: hidden;
 }
 /*=============== PROJECTS ===============*/
-.card_1 img {
-  width: 350px;
-  border: 2px solid skyblue;
-  border-radius: 20px;
-  padding: 5px;
-}
+
 /* Swiper class */
 .certificate__Name p {
   font-size: 18px;
   font-family: Georgia, "Times New Roman", Times, serif;
+}
+.card img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
 /*=============== TESTIMONIAL ===============*/
@@ -171,6 +234,9 @@
   position: absolute;
   bottom: 2.8rem;
   left: 1.5rem;
+}
+.btn .btnSubmit {
+  background-color: rgba(135, 207, 235, 0.644);
 }
 
 /*=============== FOOTER ===============*/
