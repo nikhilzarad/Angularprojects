@@ -21,6 +21,9 @@ export class MasterService {
   bookingspots(obj: any) {
     return this.http.post(`${this.apiUrl}BookSpot`, obj);
   }
+  releseSpot(obj: any) {
+    return this.http.put(`${this.apiUrl}ReleaseSpot`, obj);
+  }
   releseSpots(obj: any) {
     return this.http.put(`${this.apiUrl}ReleaseSpot`, obj);
   }

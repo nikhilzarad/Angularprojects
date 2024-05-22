@@ -28,7 +28,10 @@
   <!-- Sample parking spots -->
   @for (item of parkingSpot; track $index) { @if (checkActiveParkingSpot(item)
   != undefined){
-  <div class="parking-spot-booked">
+  <div
+    class="parking-spot-booked"
+    (click)="openReleseModel(checkActiveParkingSpot(item))"
+  >
     <div class="car">
       <i class="fa fa-car"></i>
     </div>
@@ -127,6 +130,7 @@
         <button
           type="button"
           class="btn-close"
+          (click)="closeReleseModel()"
           data-bs-dismiss="modal"
         ></button>
       </div>
@@ -134,13 +138,19 @@
         <div class="row">
           <div class="col-6">
             <label for="">Spot No</label>
-            <input type="text" value="2" class="form-control" disabled />
+            <input
+              type="text"
+              [(ngModel)]="selectedParkedObj.spotNo"
+              [value]="selectedparkingSpotNo"
+              class="form-control"
+              disabled
+            />
           </div>
           <div class="col-6">
             <label for="">Vehicle No</label>
             <input
               type="text"
-              value="MH-22 m-2233"
+              [(ngModel)]="selectedParkedObj.vehicleNo"
               class="form-control"
               disabled
               placeholder="Enter Vehicle No"
@@ -150,7 +160,7 @@
             <label for="">In-Time</label>
             <input
               type="text"
-              value="12.20"
+              [(ngModel)]="selectedParkedObj.inTime"
               class="form-control"
               disabled
               placeholder="Enter In-Time"
@@ -160,7 +170,7 @@
             <label for="">Mobile No</label>
             <input
               type="text"
-              value="9988776677"
+              [(ngModel)]="selectedParkedObj.mobileNo"
               class="form-control"
               disabled
               placeholder="Enter Mobile"
@@ -170,7 +180,7 @@
             <label for="">Out-Time</label>
             <input
               type="text"
-              value="1.30"
+              [(ngModel)]="selectedParkedObj.outTime"
               class="form-control"
               placeholder="Enter In-Time"
             />
@@ -178,10 +188,20 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeReleseModel()"
+        >
           Cancel
         </button>
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+          (click)="onReleseSpot()"
+        >
           Mark Out
         </button>
       </div>

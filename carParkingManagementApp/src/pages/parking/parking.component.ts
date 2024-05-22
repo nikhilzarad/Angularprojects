@@ -26,16 +26,7 @@ export class ParkingComponent implements OnInit {
     parkingDate: new Date(),
     spotNo: 0,
   };
-  releaseObj: any = {
-    parkingId: 0,
-    parkingLotId: 0,
-    vehicleNo: '',
-    mobileNo: '',
-    inTime: '',
-    outTime: '',
-    parkingDate: new Date(),
-    spotNo: 0,
-  };
+  selectedParkedObj: any = {};
 
   masterService = inject(MasterService);
 
@@ -72,11 +63,27 @@ export class ParkingComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.result) {
           alert('Booking Done');
+          this.ActiveParkinglotId();
           this.closeModel();
         } else {
           alert(res.message);
         }
       });
+    this.ActiveParkinglotId();
+  }
+  onReleseSpot() {
+    this.masterService
+      .releseSpot(this.selectedParkedObj)
+      .subscribe((res: any) => {
+        if (res.result) {
+          alert('Vehical Marked Out');
+          this.ActiveParkinglotId();
+          this.closeReleseModel();
+        } else {
+          alert(res.message);
+        }
+      });
+    this.ActiveParkinglotId();
   }
   setSelectParkigLot(data: any) {
     this.selectedParkingLot = data;
@@ -93,8 +100,21 @@ export class ParkingComponent implements OnInit {
       model.style.display = 'block';
     }
   }
+  openReleseModel(ParkedObj: any) {
+    this.selectedParkedObj = ParkedObj;
+    const model = document.getElementById('releaseBookModal');
+    if (model != null) {
+      model.style.display = 'block';
+    }
+  }
   closeModel() {
     const model = document.getElementById('bookModal');
+    if (model != null) {
+      model.style.display = 'none';
+    }
+  }
+  closeReleseModel() {
+    const model = document.getElementById('releaseBookModal');
     if (model != null) {
       model.style.display = 'none';
     }
