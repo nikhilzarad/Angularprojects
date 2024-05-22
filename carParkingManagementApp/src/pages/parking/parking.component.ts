@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ParkingComponent implements OnInit {
   parkingLotList: any[] = [];
+  activeParkingList: any[] = [];
   selectedParkingLot: any = {};
-  parkingSpot: number[] = [];
+  parkingSpot: any[] = [];
   selectedparkingSpotNo: number = 0;
   bookingSpotobj: any = {
     parkingId: 0,
@@ -46,8 +47,16 @@ export class ParkingComponent implements OnInit {
     this.masterService.getAllParkingLots().subscribe((res: any) => {
       this.parkingLotList = res.data;
       this.selectedParkingLot = this.parkingLotList[0];
+      this.ActiveParkinglotId();
       this.createSpotList(this.selectedParkingLot.totalParkingSpot);
     });
+  }
+  ActiveParkinglotId() {
+    this.masterService
+      .getActiveParkingLotByParkingId(this.selectedParkingLot.parkingLotId)
+      .subscribe((res: any) => {
+        this.activeParkingList = res.data;
+      });
   }
   createSpotList(totalSpot: number) {
     this.parkingSpot = [];
@@ -63,6 +72,7 @@ export class ParkingComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.result) {
           alert('Booking Done');
+          this.closeModel();
         } else {
           alert(res.message);
         }
@@ -70,7 +80,11 @@ export class ParkingComponent implements OnInit {
   }
   setSelectParkigLot(data: any) {
     this.selectedParkingLot = data;
+    this.ActiveParkinglotId();
     this.createSpotList(this.selectedParkingLot.totalParkingSpot);
+  }
+  checkActiveParkingSpot(spotNo: number) {
+    return this.activeParkingList.find((m) => m.spotNo == spotNo);
   }
   openModel(SpotNo: number) {
     this.selectedparkingSpotNo = SpotNo;
