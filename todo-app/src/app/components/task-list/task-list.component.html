@@ -1,0 +1,110 @@
+<h2>To Do List</h2>
+
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by</mat-label>
+    <mat-select [(value)]="filterBy" (selectionChange)="applyFilter()">
+      <mat-option value="all">All</mat-option>
+      <mat-option value="active">Active</mat-option>
+      <mat-option value="completed">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div>
+  <button mat-raised-button color="primary" (click)="setSortBy('title')">
+    Title <mat-icon *ngIf="sortBy === 'title'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="setSortBy('dueDate')">
+    Due Date <mat-icon *ngIf="sortBy === 'dueDate'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="setSortBy('priority')">
+    Priority <mat-icon *ngIf="sortBy === 'priority'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+  </button>
+</div>
+
+<table mat-table [dataSource]="filteredTasks" class="mat-elevation-z8">
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let task">
+      <mat-checkbox [checked]="task.completed" (change)="toggleComplete(task)"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="setSortBy('title')">
+        Title <mat-icon *ngIf="sortBy === 'title'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let task">
+      <span *ngIf="editTask?.id !== task.id">{{ task.title }}</span>
+      <mat-form-field *ngIf="editTask?.id === task.id" appearance="outline">
+        <input matInput [(ngModel)]="editTask.title" />
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let task">
+      <span *ngIf="editTask?.id !== task.id">{{ task.description }}</span>
+      <mat-form-field *ngIf="editTask?.id === task.id" appearance="outline">
+        <input matInput [(ngModel)]="editTask.description" />
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="setSortBy('dueDate')">
+        Due Date <mat-icon *ngIf="sortBy === 'dueDate'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let task">
+      <span *ngIf="editTask?.id !== task.id">{{ task.dueDate | date }}</span>
+      <mat-form-field *ngIf="editTask?.id === task.id" appearance="outline">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="editTask.dueDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="priority">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-button (click)="setSortBy('priority')">
+        Priority <mat-icon *ngIf="sortBy === 'priority'">{{ sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let task">
+      <span *ngIf="editTask?.id !== task.id">{{ task.priority }}</span>
+      <mat-form-field *ngIf="editTask?.id === task.id" appearance="outline">
+        <mat-select [(ngModel)]="editTask.priority">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let task">
+      <div *ngIf="editTask?.id !== task.id">
+        <button mat-button color="accent" (click)="edit(task)">Edit</button>
+        <button mat-button color="warn" (click)="deleteTask(task.id)">Delete</button>
+      </div>
+      <div *ngIf="editTask?.id === task.id">
+        <button mat-button color="primary" (click)="saveEdit()">Save</button>
+        <button mat-button (click)="cancelEdit()">Cancel</button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['completed', 'title', 'description', 'dueDate', 'priority', 'actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['completed', 'title', 'description', 'dueDate', 'priority', 'actions']"></tr>
+</table>
+
+<app-add-task (taskAdded)="addTask($event)"></app-add-task>
