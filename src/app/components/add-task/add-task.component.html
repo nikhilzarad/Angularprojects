@@ -1,0 +1,57 @@
+<div class="add-task-container">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <!-- Close Icon -->
+    <button mat-icon-button class="close-button" aria-label="Close" (click)="dialogRef.close()">
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+
+    <h2>Add New Task</h2>
+
+    <!-- Title Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter task title" />
+      <mat-error *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+        Title is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Description Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter task description"></textarea>
+      <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
+        Description is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Due Date Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Select due date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched">
+        Due date is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Priority Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option value="low">Low</mat-option>
+        <mat-option value="medium">Medium</mat-option>
+        <mat-option value="high">High</mat-option>
+      </mat-select>
+      <mat-error *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched">
+        Priority is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">
+      Add Task
+    </button>
+  </form>
+</div>
