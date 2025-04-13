@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ParkingComponent implements OnInit {
   parkingLotList: any[] = [];
+  activeParkingList: any[] = [];
   selectedParkingLot: any = {};
-  parkingSpot: number[] = [];
+  parkingSpot: any[] = [];
   selectedparkingSpotNo: number = 0;
   bookingSpotobj: any = {
     parkingId: 0,
@@ -25,16 +26,7 @@ export class ParkingComponent implements OnInit {
     parkingDate: new Date(),
     spotNo: 0,
   };
-  releaseObj: any = {
-    parkingId: 0,
-    parkingLotId: 0,
-    vehicleNo: '',
-    mobileNo: '',
-    inTime: '',
-    outTime: '',
-    parkingDate: new Date(),
-    spotNo: 0,
-  };
+  selectedParkedObj: any = {};
 
   masterService = inject(MasterService);
 
@@ -46,8 +38,16 @@ export class ParkingComponent implements OnInit {
     this.masterService.getAllParkingLots().subscribe((res: any) => {
       this.parkingLotList = res.data;
       this.selectedParkingLot = this.parkingLotList[0];
+      this.ActiveParkinglotId();
       this.createSpotList(this.selectedParkingLot.totalParkingSpot);
     });
+  }
+  ActiveParkinglotId() {
+    this.masterService
+      .getActiveParkingLotByParkingId(this.selectedParkingLot.parkingLotId)
+      .subscribe((res: any) => {
+        this.activeParkingList = res.data;
+      });
   }
   createSpotList(totalSpot: number) {
     this.parkingSpot = [];
@@ -63,14 +63,35 @@ export class ParkingComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.result) {
           alert('Booking Done');
+          this.ActiveParkinglotId();
+          this.closeModel();
         } else {
           alert(res.message);
         }
       });
+    this.ActiveParkinglotId();
+  }
+  onReleseSpot() {
+    this.masterService
+      .releseSpot(this.selectedParkedObj)
+      .subscribe((res: any) => {
+        if (res.result) {
+          alert('Vehical Marked Out');
+          this.ActiveParkinglotId();
+          this.closeReleseModel();
+        } else {
+          alert(res.message);
+        }
+      });
+    this.ActiveParkinglotId();
   }
   setSelectParkigLot(data: any) {
     this.selectedParkingLot = data;
+    this.ActiveParkinglotId();
     this.createSpotList(this.selectedParkingLot.totalParkingSpot);
+  }
+  checkActiveParkingSpot(spotNo: number) {
+    return this.activeParkingList.find((m) => m.spotNo == spotNo);
   }
   openModel(SpotNo: number) {
     this.selectedparkingSpotNo = SpotNo;
@@ -79,8 +100,21 @@ export class ParkingComponent implements OnInit {
       model.style.display = 'block';
     }
   }
+  openReleseModel(ParkedObj: any) {
+    this.selectedParkedObj = ParkedObj;
+    const model = document.getElementById('releaseBookModal');
+    if (model != null) {
+      model.style.display = 'block';
+    }
+  }
   closeModel() {
     const model = document.getElementById('bookModal');
+    if (model != null) {
+      model.style.display = 'none';
+    }
+  }
+  closeReleseModel() {
+    const model = document.getElementById('releaseBookModal');
     if (model != null) {
       model.style.display = 'none';
     }
