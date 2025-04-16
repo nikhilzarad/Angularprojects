@@ -14,19 +14,5 @@ import { Task } from './model/task';
 export class AppComponent {
   title = 'crud_App-with-localstorage';
 
-  readonly dialog = inject(MatDialog);
-
-  openAddtaskDialog() {
-    const dialogRef = this.dialog.open(AddTaskComponent);
-
-    dialogRef.componentInstance.taskAdded.subscribe((task: Task) => {
-      // Pass the task data to the TaskListComponent
-      const taskListComponent = document.querySelector('app-task-list') as any;
-      taskListComponent.taskDataRecieved(task);
-    });
-  }
-
-  openAddTaskDialog(): void {
-    this.dialog.open(AddTaskComponent);
-  }
+ 
 }

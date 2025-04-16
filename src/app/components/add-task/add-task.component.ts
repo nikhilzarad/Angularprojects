@@ -1,42 +1,51 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MaterialModule } from '../../material/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from '../../model/task';
-import { MatDialogRef } from '@angular/material/dialog';
 import { TaskService } from '../../services/task.service';
+import { MaterialModule } from '../../material/material/material.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
-  imports: [MaterialModule, ReactiveFormsModule,CommonModule],
+  imports: [MaterialModule, CommonModule, FormsModule, ReactiveFormsModule], // No additional imports needed here
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
   taskForm!: FormGroup;
-  @Output() taskAdded: EventEmitter<Task> = new EventEmitter<Task>();
+  isEditMode: boolean = false;
 
   constructor(
     private fb: FormBuilder,
+    private taskService: TaskService,
     public dialogRef: MatDialogRef<AddTaskComponent>,
-    private taskService: TaskService
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: Task | null
+  ) { }
 
   ngOnInit(): void {
+    this.isEditMode = !!this.data; // Determine if it's edit mode
     this.taskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      dueDate: ['', Validators.required],
-      priority: ['', Validators.required]
+      id: [this.data?.id || null],
+      title: [this.data?.title || '', Validators.required],
+      description: [this.data?.description || '', Validators.required],
+      dueDate: [this.data?.dueDate || '', Validators.required],
+      priority: [this.data?.priority || '', Validators.required],
+      remarks: [this.data?.remarks || ''],
     });
   }
 
   onSubmit(): void {
     if (this.taskForm.valid) {
-      this.taskService.addTask(this.taskForm.value); // Emit task data
-      this.taskForm.reset();
-      this.dialogRef.close(); // Close the dialog
+      const task = this.taskForm.value;
+
+      if (this.isEditMode) {
+        this.taskService.updateTask(task); // Update the task
+      } else {
+        this.taskService.addTask(task); // Add a new task
+      }
+
+      this.dialogRef.close(true); // Notify the parent component
     }
   }
 }

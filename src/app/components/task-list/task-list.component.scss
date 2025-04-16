@@ -1,0 +1,237 @@
+/* Default styles for buttons */
+.edit-button,
+.delete-button,
+.add-button {
+  margin: 8px;
+}
+
+.add-task-container {
+  display: flex;
+  justify-content: flex-start;
+  /* Align the button to the start of the container */
+  margin-bottom: 16px;
+  /* Add spacing below the container */
+  margin-top: 5px;
+  margin-left: 16px;
+  /* Add spacing to the left */
+}
+
+/* Apply the font style to mat-header-cell */
+.mat-mdc-header-cell {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  // font-weight: bold;
+  font-style: normal;
+  // font-size: 16px; /* Default font size */
+  color: #333;
+  /* Default color */
+}
+
+.mdc-data-table__cell {
+  font-family: cursive;
+}
+
+/* Dialog container styles */
+.mat-dialog-container {
+  max-width: 600px;
+  /* Default max width for larger screens */
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+/* Default table styles */
+table {
+  width: 100%;
+  /* Ensure the table takes full width */
+  border-collapse: collapse;
+  /* Remove gaps between table cells */
+  margin-bottom: 16px;
+  /* Add spacing below the table */
+}
+
+th {
+  font-size: 23px;
+  padding: 6px;
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+
+  .edit-button,
+  .delete-button,
+  .add-button {
+    margin: 3px;
+
+  }
+
+  .mat-dialog-container {
+    max-width: 70%;
+    height: auto;
+    /* Reduce the container width */
+    padding: 12px;
+
+  }
+
+  table {
+    margin-bottom: 12px;
+    /* Reduce spacing below the table */
+  }
+
+  th {
+    font-size: 17px;
+    /* Reduce font size */
+    padding: 4px;
+    /* Reduce padding */
+  }
+
+  td {
+    // font-size: 
+    font-family: cursive;
+    /* Reduce font size */
+    padding: 4px;
+    /* Reduce padding */
+  }
+
+  .mat-dialog-title {
+    font-size: 20px;
+    /* Reduce font size for the title */
+  }
+
+
+  mat-paginator {
+    margin-top: 20px;
+  }
+}
+
+/* Responsive styles for devices with width 425px */
+@media (max-width: 425px) {
+
+  .edit-button,
+  .delete-button,
+  .add-button {
+    margin: 3px;
+  }
+
+  .mat-dialog-container {
+    max-width: 70%;
+    height: auto;
+    /* Reduce the container width */
+    padding: 12px;
+    /* Reduce padding */
+  }
+
+  table {
+    margin-bottom: 12px;
+  }
+
+  th {
+    font-size: 12px;
+    padding: 2px;
+  }
+
+  .mat-dialog-title {
+    font-size: 20px;
+    /* Reduce font size for the title */
+  }
+
+
+  mat-paginator {
+    margin-top: 20px;
+  }
+}
+
+/* Responsive styles for devices with width 375px */
+@media (max-width: 375px) {
+
+  .edit-button,
+  .delete-button,
+  .add-button {
+    margin: 3px;
+  }
+
+  .mat-dialog-container {
+    max-width: 70%;
+    height: auto;
+    /* Reduce the container width */
+    padding: 12px;
+    /* Reduce padding */
+  }
+
+  table {
+    margin-bottom: 12px;
+  }
+
+  th {
+
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .mat-dialog-title {
+    font-size: 20px;
+    /* Reduce font size for the title */
+  }
+
+
+  mat-paginator {
+    margin-top: 20px;
+  }
+}
+
+/* Responsive styles for devices with width 320px */
+@media (max-width: 320px) {
+
+  /* Buttons */
+  .edit-button,
+  .delete-button,
+  .add-button {
+    // min-width: 10px;
+    margin: 3px;
+    /* Reduce font size */
+  }
+
+  /* Dialog Container */
+  .mat-dialog-container {
+    max-width: 90%;
+    /* Reduce the container width */
+    height: auto;
+    /* Adjust height dynamically */
+    padding: 10px;
+    /* Further reduce padding */
+    border-radius: 6px;
+    /* Adjust border radius */
+  }
+
+  /* Table */
+  table {
+    margin-bottom: 12px;
+  }
+
+  th {
+    font-size: 9px;
+    padding: 3px;
+  }
+
+  /* Dialog Title */
+  .mat-dialog-title {
+    font-size: 16px;
+    /* Further reduce font size */
+    text-align: center;
+    /* Center align the title */
+  }
+
+  /* Paginator */
+  mat-paginator {
+    margin-top: 16px;
+    /* Adjust spacing above the paginator */
+
+  }
+}

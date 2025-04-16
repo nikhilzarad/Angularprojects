@@ -1,9 +1,117 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+mat-raised-button {
+  margin-right: 20px;
+}
+
+mat-toolbar {
+  background: rgba(135, 207, 235, 0.851);
+  color: white;
+  min-height: 64px; /* Default height for larger screens */
+  width: 100%; /* Ensure full width for all devices */
+}
+
+mat-toolbar-row {
+  display: flex;
+  justify-content: center; /* Center all content horizontally */
+  align-items: center; /* Center all content vertically */
+  padding: 0 16px; /* Add padding to the toolbar row */
+}
+
+.bruno-ace-sc-bold {
+  font-family: "Bruno Ace SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center; /* Center the text */
+  color: black;
+  letter-spacing: 3px;
+  font-size: 24px; /* Default font size for larger screens */
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+  mat-toolbar {
+    min-height: 56px; /* Reduce toolbar height */
   }
+
+  .bruno-ace-sc-bold {
+    font-size: 20px; /* Reduce font size */
+    letter-spacing: 2px; /* Adjust letter spacing */
+  }
+
   mat-raised-button {
-    margin-right: 20px;
+    margin-right: 10px; /* Reduce button margin */
+    font-size: 14px; /* Adjust button font size */
   }
-  .add-task-button {
-    margin-right: 100px;
+
+  mat-toolbar-row {
+    padding: 0 12px; /* Reduce padding */
   }
+}
+
+/* Responsive styles for devices with width 425px */
+@media (max-width: 425px) {
+  mat-toolbar {
+    min-height: 50px; /* Reduce toolbar height */
+  }
+
+  .bruno-ace-sc-bold {
+    font-size: 18px; /* Reduce font size */
+    letter-spacing: 1.5px; /* Adjust letter spacing */
+  }
+
+  mat-raised-button {
+    margin-right: 8px; /* Reduce button margin */
+    font-size: 12px; /* Adjust button font size */
+  }
+
+  mat-toolbar-row {
+    padding: 0 10px; /* Reduce padding */
+  }
+}
+
+/* Responsive styles for devices with width 375px */
+@media (max-width: 376px) {
+  mat-toolbar {
+    min-height: 48px; /* Further reduce toolbar height */
+  }
+
+  .bruno-ace-sc-bold {
+    font-size: 16px; /* Further reduce font size */
+    letter-spacing: 1px; /* Adjust letter spacing */
+  }
+
+  mat-raised-button {
+    margin-right: 6px; /* Further reduce button margin */
+    font-size: 11px; /* Further reduce button font size */
+  }
+
+  mat-toolbar-row {
+    padding: 0 8px; /* Further reduce padding */
+  }
+}
+
+/* Responsive styles for devices with width 320px */
+@media (max-width: 320px) {
+  mat-toolbar {
+    min-height: 44px; /* Further reduce toolbar height */
+  }
+
+  .bruno-ace-sc-bold {
+    font-size: 14px; /* Further reduce font size */
+    letter-spacing: 0.5px; /* Adjust letter spacing */
+  }
+
+  mat-raised-button {
+    margin-right: 4px; /* Further reduce button margin */
+    font-size: 10px; /* Further reduce button font size */
+  }
+
+  mat-toolbar-row {
+    flex-direction: column; /* Stack toolbar items vertically */
+    align-items: center; /* Center items vertically */
+    padding: 0 6px; /* Further reduce padding */
+  }
+}
