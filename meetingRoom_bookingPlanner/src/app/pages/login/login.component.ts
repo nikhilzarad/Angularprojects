@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         if (res.result) {
           const loginData=localStorage.setItem('loginInfo',JSON.stringify(res.data));
           const loginUser= localStorage.setItem('loginUserName',JSON.stringify(res.data.userName));
-          if (res.data.role == 'Admin') {
+          if (res.data.role == 'admin') {
             this.router.navigateByUrl('admin-Dashboard');
           } else if (res.data.role == 'ClientAdmin') {
             this.router.navigateByUrl('client-Dashboard');
