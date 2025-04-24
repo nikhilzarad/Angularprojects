@@ -35,7 +35,7 @@ export class RoomsComponent implements OnInit {
   getRoomsByClientId() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllRoomsByClientId?id=' +
+        '/api/Meeting/GetAllRoomsByClientId?id=' +
           this.roomObj.clientId
       )
       .subscribe((res: any) => {
@@ -46,7 +46,7 @@ export class RoomsComponent implements OnInit {
   createNewRooms() {
     this.http
       .post(
-        'http://onlinetestapi.gerasim.in/api/Meeting/CreateRoom',
+        '/api/Meeting/CreateRoom',
         this.roomObj
       )
       .subscribe((res: any) => {
@@ -64,7 +64,7 @@ export class RoomsComponent implements OnInit {
 
     this.http
       .post(
-        'http://onlinetestapi.gerasim.in/api/Meeting/UpdateRoom',
+        '/api/Meeting/UpdateRoom',
         this.roomObj
       )
       .subscribe((res: any) => {
@@ -78,7 +78,7 @@ export class RoomsComponent implements OnInit {
   editRecord(id: number) {
 
     this.http
-      .get('http://onlinetestapi.gerasim.in/api/Meeting/GetRoomById?id=' + id)
+      .get('/api/Meeting/GetRoomById?id=' + id)
       .subscribe((res: any) => {
         if (res.result) {
           this.roomObj = res.data;
@@ -93,7 +93,7 @@ export class RoomsComponent implements OnInit {
     if (isDelete == true) {
       this.http
         .post(
-          'http://onlinetestapi.gerasim.in/api/Meeting/DeleteRoomById?id=' +
+          '/api/Meeting/DeleteRoomById?id=' +
             deleteId,
           this.roomObj
         )

@@ -22,7 +22,7 @@ export class ClientUserDashboardComponent {
   getClientAdminData() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetClientUserDashboard?id=' +
+        '/api/Meeting/GetClientUserDashboard?id=' +
           this.loginClientUser
       )
       .subscribe((res: any) => {

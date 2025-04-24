@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "http://onlinetestapi.gerasim.in",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

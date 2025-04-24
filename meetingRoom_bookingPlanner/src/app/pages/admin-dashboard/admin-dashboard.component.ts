@@ -18,7 +18,7 @@ ngOnInit(): void {
 }
 
 getAdminData(){
-  this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/getAdminDashboardData').subscribe((res:any)=>{
+  this.http.get('/api/Meeting/getAdminDashboardData').subscribe((res:any)=>{
     this.adminDataArray=res.data;
   })
 }

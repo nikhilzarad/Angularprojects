@@ -15,7 +15,7 @@ export class PackageActivationComponent implements OnInit{
     this.getAllClient();
   }
   getAllClient(){
-    this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/GetAllPackages').subscribe((res:any)=>{
+    this.http.get('/api/Meeting/GetAllPackages').subscribe((res:any)=>{
       this.packageList=res.data;
     })
   }

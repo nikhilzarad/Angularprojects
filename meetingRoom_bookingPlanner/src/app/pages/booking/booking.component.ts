@@ -40,7 +40,7 @@ export class BookingComponent implements OnInit {
   createBooking() {
     this.http
       .post(
-        'http://onlinetestapi.gerasim.in/api/Meeting/CreateBooking',
+        '/api/Meeting/CreateBooking',
         this.bookingObj
       )
       .subscribe((res: any) => {
@@ -56,7 +56,7 @@ export class BookingComponent implements OnInit {
   getAllBooking() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllBookingsByClientId?clientId=' +
+        '/api/Meeting/GetAllBookingsByClientId?clientId=' +
           this.userDetails.clientId
       )
       .subscribe((res: any) => {
@@ -67,7 +67,7 @@ export class BookingComponent implements OnInit {
   getRoomSList() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllRoomsByClientId?id=' +
+        '/api/Meeting/GetAllRoomsByClientId?id=' +
           this.userDetails.clientId
       )
       .subscribe((res: any) => {
@@ -88,7 +88,7 @@ export class BookingComponent implements OnInit {
 
   getTimeList() {
     this.http
-      .get('http://onlinetestapi.gerasim.in/api/Meeting/GetTimeList')
+      .get('/api/Meeting/GetTimeList')
       .subscribe((res: any) => {
         this.timeArray = res.data;
       });
@@ -112,7 +112,7 @@ export class BookingComponent implements OnInit {
   //   if (isDelete == true) {
   //     this.http
   //       .post(
-  //         'http://onlinetestapi.gerasim.in/api/Meeting/DeleteBookingById?id=' +
+  //         '/api/Meeting/DeleteBookingById?id=' +
   //           Deleteid,
   //         this.bookingObj
   //       )

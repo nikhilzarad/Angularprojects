@@ -30,12 +30,12 @@ export class ClientComponent implements OnInit{
   }
 
  getAllClient(){
-  this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/GetAllClients').subscribe((res:any)=>{
+  this.http.get('/api/Meeting/GetAllClients').subscribe((res:any)=>{
     this.clientArray=res.data;
   })
  }
  addNewClient(){
-  this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/AddClients',this.clientObj).subscribe((res:any)=>{
+  this.http.post('/api/Meeting/AddClients',this.clientObj).subscribe((res:any)=>{
     if(res.result){
 
       this.clientObj=res.data;
@@ -48,7 +48,7 @@ export class ClientComponent implements OnInit{
 
 
  editRecord(id:number){
-  this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/GetClientsById?id='+id).subscribe((res:any)=>{
+  this.http.get('/api/Meeting/GetClientsById?id='+id).subscribe((res:any)=>{
     if (res.result) {
       this.clientObj = res.data;
     } else {
@@ -60,7 +60,7 @@ export class ClientComponent implements OnInit{
  onDelete(Deleteid:number){
   const isDelete = confirm('Are you sure want to Delete?');
     if (isDelete == true) {
-  this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/DeleteClients?id='+Deleteid,this.clientObj).subscribe((res:any)=>{
+  this.http.post('/api/Meeting/DeleteClients?id='+Deleteid,this.clientObj).subscribe((res:any)=>{
     if (res.result) {
       this.getAllClient();
       alert('Client Deleted Sucessfully');
@@ -70,7 +70,7 @@ export class ClientComponent implements OnInit{
  })
  }}
  updateClient() {
-  this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/UpdateClients',this.clientObj).subscribe((res:any)=>{
+  this.http.post('/api/Meeting/UpdateClients',this.clientObj).subscribe((res:any)=>{
       if (res.result) {
         alert('client updated Successfully');
         this.getAllClient()

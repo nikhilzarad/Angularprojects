@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
   onLogin() {
     this.http
-      .post('http://onlinetestapi.gerasim.in/api/Meeting/login', this.loginObj)
+      .post('/api/Meeting/login', this.loginObj)
       .subscribe((res: any) => {
         if (res.result) {
           const loginData=localStorage.setItem('loginInfo',JSON.stringify(res.data));

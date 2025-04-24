@@ -42,14 +42,14 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {}
   getAllClient() {
     this.http
-      .get('http://onlinetestapi.gerasim.in/api/Meeting/GetAllClients')
+      .get('/api/Meeting/GetAllClients')
       .subscribe((res: any) => {
         this.clientList = res.data;
       });
   }
   getAllUser() {
     this.http
-      .get('http://onlinetestapi.gerasim.in/api/Meeting/GetAllusers')
+      .get('/api/Meeting/GetAllusers')
       .subscribe((res: any) => {
         this.userList = res.data;
       });
@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit {
   getUserByClientId() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetAllUsersByClientId?id=' +
+        '/api/Meeting/GetAllUsersByClientId?id=' +
           this.userObj.clientId
       )
       .subscribe((res: any) => {
@@ -68,7 +68,7 @@ export class UsersComponent implements OnInit {
   saveUser() {
     this.http
       .post(
-        'http://onlinetestapi.gerasim.in/api/Meeting/AddUsers',
+        '/api/Meeting/AddUsers',
         this.userObj
       )
       .subscribe((res: any) => {
@@ -91,7 +91,7 @@ export class UsersComponent implements OnInit {
   onDelete(Deleteid:number){
     const isDelete = confirm('Are you sure want to Delete?');
       if (isDelete == true) {
-    this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/DeleteUsersById?id='+Deleteid,this.userObj).subscribe((res:any)=>{
+    this.http.post('/api/Meeting/DeleteUsersById?id='+Deleteid,this.userObj).subscribe((res:any)=>{
       if (res.result) {
         this.getAllUser();
         alert('User Deleted Sucessfully');
@@ -101,7 +101,7 @@ export class UsersComponent implements OnInit {
    })
    }}
    updateUser() {
-    this.http.post('http://onlinetestapi.gerasim.in/api/Meeting/UpdateUser',this.userObj).subscribe((res:any)=>{
+    this.http.post('/api/Meeting/UpdateUser',this.userObj).subscribe((res:any)=>{
         if (res.result) {
           alert('User updated Successfully');
           this.getAllUser();
@@ -110,7 +110,7 @@ export class UsersComponent implements OnInit {
         }
       });}
       editRecord(id:number){
-        this.http.get('http://onlinetestapi.gerasim.in/api/Meeting/GetUsersById?id='+id).subscribe((res:any)=>{
+        this.http.get('/api/Meeting/GetUsersById?id='+id).subscribe((res:any)=>{
           if (res.result) {
             this.userObj = res.data;
           } else {

@@ -22,7 +22,7 @@ export class ClientAdminDashboardComponent implements OnInit {
   getClientAdminData() {
     this.http
       .get(
-        'http://onlinetestapi.gerasim.in/api/Meeting/GetClientAdminDashboard?id=' +
+        '/api/Meeting/GetClientAdminDashboard?id=' +
           this.loginClient
       )
       .subscribe((res: any) => {

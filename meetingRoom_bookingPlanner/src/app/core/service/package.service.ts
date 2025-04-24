@@ -9,29 +9,29 @@ export class PackageService {
 
   getAllPackages() {
     return this.http.get(
-      'http://onlinetestapi.gerasim.in/api/Meeting/GetAllPackages'
+      '/api/Meeting/GetAllPackages'
     );
   }
   addNewPackage(obj: any) {
     return this.http.post(
-      'http://onlinetestapi.gerasim.in/api/Meeting/CreatePackage',
+      '/api/Meeting/CreatePackage',
       obj
     );
   }
   getPackageById(pkgId: number) {
     return this.http.get(
-      'http://onlinetestapi.gerasim.in/api/Meeting/GetPackgeById?id=' + pkgId
+      '/api/Meeting/GetPackgeById?id=' + pkgId
     );
   }
   updateSelectedPackage(obj: any) {
     return this.http.post(
-      'http://onlinetestapi.gerasim.in/api/Meeting/UpdatePackge',
+      '/api/Meeting/UpdatePackge',
       obj
     );
   }
   deletePackage(id: any) {
     return this.http.post(
-      'http://onlinetestapi.gerasim.in/api/Meeting/DeletePackgeById?id=' + id,
+      '/api/Meeting/DeletePackgeById?id=' + id,
       {}
     );
   }
